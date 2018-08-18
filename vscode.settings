@@ -1,0 +1,33 @@
+{
+    "epitech-c-cpp-headers.username": "benoit.pingris@epitech.eu",
+    "epitech-c-cpp-headers.login": "benoit.pingris@epitech.eu",
+    "epitech-c-cpp-headers.headerType": "post2017",
+    "epitech-c-cpp-headers.usePragmaOnce": true,
+    "epitech-c-cpp-headers.autoGenerateClasses": true,
+    "extensions.ignoreRecommendations": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "window.zoomLevel": 1,
+    "editor.fontSize": 15,
+    "editor.lineHeight": 20,
+    "workbench.colorTheme": "FlatUI Dark",
+    // "editor.fontFamily": "Source Code Pro for Powerline",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "files.trimTrailingWhitespace": true,
+    "workbench.startupEditor": "welcomePage",
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.hidesExplorerArrows": true,
+    "files.autoSave": "afterDelay",
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.includeName": false,
+    "autoDocstring.newlineBeforeSummary": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ],
+    "python.envFile": "${workspaceFolder}/bin/python",
+    "javascript.updateImportsOnFileMove.enabled": "always"
+}
