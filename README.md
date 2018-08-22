@@ -20,9 +20,9 @@ chmod +x installer.sh
 I'm using manjaro 17.1.12 XFCE edition
 
 `neofetch`
-![neofetch](https://imgur.com/Sx76GpG)
+![neofetch](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/neofetch.png)
 
 `wallpaper`
-![wallpaper](https://imgur.com/a/Cs3gqaU)
+![wallpaper](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/landscape.jpg)
 
 
