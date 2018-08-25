@@ -39,6 +39,12 @@ EOF
     exit 0
 }
 
+if [ "$EUID" = 0 ]
+then
+    echo "Please do not run as root !"
+    exit 1
+fi
+
 
 case "$1" in
     -d|--dry-run|--dryrun)
