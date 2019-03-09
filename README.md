@@ -3,7 +3,7 @@
 This repository contains useful informations about my setup
 
 En vrac:
-- fish with oh-my-fish(shell I use)
+- fish with oh-my-fish (shell I use)
 - zsh with oh-my-zsh
 - vscode's extensions and settings
 - onivim (Vim but it's pretty)
@@ -20,13 +20,9 @@ chmod +x install.sh && ./install.sh
 Some screenshots of my beautiful setup:
 
 ### Neofetch
-
-### Onivim
-
-
 ![neofetch](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/neofetch.png)
 
-`wallpaper`
-![wallpaper](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/landscape.jpg)
+### Onivim
+![onivim](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/onivim.png)
 
 
