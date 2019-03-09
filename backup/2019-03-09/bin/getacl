@@ -1,0 +1,11 @@
+#!/bin/sh
+## EPITECH PROJECT, 2018
+## 
+## File description:
+## 
+##
+
+
+REPO=$1
+
+blih -u benoit.pingris@epitech.eu repository getacl $REPO

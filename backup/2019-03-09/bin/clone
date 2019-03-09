@@ -1,0 +1,6 @@
+#!/bin/sh
+
+MATE=$1
+REPO=$2
+
+git clone git@git.epitech.eu:/$MATE@epitech.eu/$REPO

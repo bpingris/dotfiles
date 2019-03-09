@@ -1,0 +1,15 @@
+#!/bin/bash
+
+## Created By Aditya Shakya
+
+
+# rofi -show drun -modi drun -theme /home/benoit/.config/sidetab.rasi
+
+MENU="$(rofi -theme /home/benoit/.config/sidetab.rasi -sep "|" -dmenu -i -p 'System' <<< " Suspend| Lock| Logout| Reboot| Shutdown")"
+            case "$MENU" in
+                *Lock) i3lock -i ~/Images/wallpaper/octopus.png ;;
+                *Logout) pkill -KILL -u benoit;;
+                *Reboot) systemctl reboot ;;
+                *Shutdown) systemctl -i poweroff;;
+				*Suspend) systemctl suspend
+            esac

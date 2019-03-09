@@ -1,0 +1,13 @@
+#!/bin/sh
+## mcl.sh for cmd in /home/benoit.pingris/bin
+## 
+## Made by benoit pingris
+## Login   <benoit.pingris@epitech.net>
+## 
+## Started on  Mon Dec  5 16:41:08 2016 benoit pingris
+## Last update Sat Jun 17 10:27:15 2017 benoit pingris
+##
+
+find . \( -name "*~" -o -name "#*#" \) -delete
+find . \( -name "*.o" -o -name "a.out" \) -delete
+

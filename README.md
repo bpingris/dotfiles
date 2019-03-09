@@ -1,25 +1,29 @@
-# Dotfiles Benoit Pingris
+# Dotfile Benoît Pingris
 
-This repository contains useful information about my system :
+This repository contains useful informations about my setup
 
- - zsh
- - oh-my-zsh
- - emacs
- - vscode
-	 - extensions
-	 - settings
+En vrac:
+- fish with oh-my-fish(shell I use)
+- zsh with oh-my-zsh
+- vscode's extensions and settings
+- onivim (Vim but it's pretty)
+- a lot of scripts
 
-It also contains a small script to automate the installation of the packages listed above.
+I'm using Manjaro 18.0.3. My desktop manager is LXQt with i3, the tilling manager (best combo)
+
+It also contains a script that is supposed to install all the required packages to run my setup
 
 ```bash
-chmod +x installer.sh
-./installer.sh #(without sudo!)
+chmod +x install.sh && ./install.sh
 ```
 
-## My current system
-I'm using manjaro 17.1.12 XFCE edition
+Some screenshots of my beautiful setup:
 
-`neofetch`
+### Neofetch
+
+### Onivim
+
+
 ![neofetch](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/neofetch.png)
 
 `wallpaper`

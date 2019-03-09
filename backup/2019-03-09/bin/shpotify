@@ -1,0 +1,52 @@
+
+domain="org.mpris.MediaPlayer2"
+
+getSong() {
+    meta=$(dbus-send --print-reply --dest=${domain}.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:${domain}.Player string:Metadata)
+    artist=$(echo "$meta" | sed -nr '/xesam:artist"/,+2s/^ +string "(.*)"$/\1/p' | tail -1  | sed "s/\&/+/g")
+    album=$(echo "$meta" | sed -nr '/xesam:album"/,+2s/^ +variant +string "(.*)"$/\1/p' | tail -1)
+    title=$(echo "$meta" | sed -nr '/xesam:title"/,+2s/^ +variant +string "(.*)"$/\1/p' | tail -1 | sed "s/\&/+/g")
+
+    echo "${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s/%title%/$title/g;s/%album%/$album/g"i | sed 's/&/\\&/g'
+    return
+}
+
+next() {
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+    return
+}
+
+previous() {
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    return
+}
+
+playpause() {
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    return    
+}
+
+main() {
+    /usr/bin/pgrep -a spotify > /dev/null 2>&1
+    if [ "$?" -eq 0 ]; then
+	case "$1" in
+	    getSong)
+		getSong
+		;;
+	    next)
+		next
+		;;
+	    previous)
+		previous
+		;;
+	    playpause)
+		playpause
+		;;
+	esac
+	exit 0
+    else
+	exit 1
+    fi
+}
+
+main "$@"
