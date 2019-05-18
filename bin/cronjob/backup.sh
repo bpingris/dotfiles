@@ -7,6 +7,10 @@ FILES="
 	$HOME/.config/polybar
 	$HOME/.config/nvim
 	$HOME/bin
+    $HOME/.config/fish
+    $HOME/.config/oni/config.tsx
+    $HOME/.config/oni/config.js
+    $HOME/.zshrc
 	"
 	
 mkdir -p $BACKUP_DIR

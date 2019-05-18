@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+TMPFILE=$(mktemp)
+prettierx --generator-star-spacing --space-before-function-paren --single-quote --jsx-single-quote --no-semi --yield-star-spacing --no-align-ternary-lines $1 > ${TMPFILE}
+
+cat ${TMPFILE} > $1
+rm -f ${TMPFILE}
