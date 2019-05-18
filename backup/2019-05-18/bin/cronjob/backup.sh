@@ -10,7 +10,6 @@ FILES="
     $HOME/.config/fish
     $HOME/.config/oni/config.tsx
     $HOME/.config/oni/config.js
-    $HOME/Work/Perso/speedtest
     $HOME/.zshrc
 	"
 	

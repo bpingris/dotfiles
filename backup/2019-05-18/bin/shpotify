@@ -1,4 +1,4 @@
-
+#!/bin/sh
 domain="org.mpris.MediaPlayer2"
 
 getSong() {

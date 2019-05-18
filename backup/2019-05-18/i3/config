@@ -150,8 +150,8 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec ~/bin/bright 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/bin/bright -5 # decrease screen brightness
 
 
 
@@ -164,6 +164,7 @@ exec_always --no-startup-id ~/bin/active_touch_pad
 
 bindsym $mod+w exec feh --randomize --bg-scale ~/Images/wallpaper
 bindsym $mod+BackSpace exec ~/.config/polybar/scripts/menu_poweroff
+bindsym $mod+Shift+d exec ~/bin/screen_options
 bindsym Print exec scrot "$HOME/Images/screenshots/`date +%Y-%m-%d_%H:%M:%S`.png"
 bindsym --release Shift+Print exec scrot -s "$HOME/Images/screenshots/`date +%Y-%m-%d_%H:%M:%S.png`"
 

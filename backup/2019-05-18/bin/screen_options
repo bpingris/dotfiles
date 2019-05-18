@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MENU="$(rofi -theme /home/benoit/.config/sidetab.rasi -sep "|" -dmenu -i -p 'System' <<< "Extend|Duplicate|Primary|Second")"
+
+case "$MENU" in
+	*Extend);;
+	*Duplicate) mons -d;;
+	*Primary) mons -o;;
+	*Second) mons -s;;
+esac
