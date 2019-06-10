@@ -1,4 +1,4 @@
-
+#!/bin/bash
 touchpad=`xinput | grep -ioE '↳.*touchpad' | sed 's/↳ //'`
 
 go() { 

@@ -1,0 +1,68 @@
+{
+  "editor.fontSize": 14,
+  "window.zoomLevel": 0.75,
+  "workbench.iconTheme": "material-icon-theme",
+  "go.testFlags": ["-v"],
+  "go.formatTool": "gofmt",
+  "go.lintTool": "revive",
+  "files.trimTrailingWhitespace": true,
+  "material-icon-theme.hidesExplorerArrows": true,
+  "workbench.colorTheme": "Dark++",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.smoothScrolling": false,
+  "workbench.statusBar.feedback.visible": false,
+  "editor.minimap.renderCharacters": false,
+  "npm.enableScriptExplorer": true,
+  "editor.cursorSmoothCaretAnimation": true,
+  "breadcrumbs.enabled": true
+}
+// OLD CONFIG
+// {
+//   "editor.fontLigatures": true,
+//   "workbench.iconTheme": "material-icon-theme",
+//   "window.zoomLevel": 1,
+//   "files.trimTrailingWhitespace": true,
+//   "terminal.integrated.fontFamily": "monospace",
+//   "breadcrumbs.enabled": true,
+//   "epitech-c-cpp-headers.username": "benoit.pingris@epitech.eu",
+//   "epitech-c-cpp-headers.login": "benoit.pingris@epitech.eu",
+//   "epitech-c-cpp-headers.headerType": "post2017",
+//   "epitech-c-cpp-headers.usePragmaOnce": true,
+//   "epitech-c-cpp-headers.autoGenerateClasses": true,
+//   "editor.autoIndent": true,
+//   "files.associations": {
+//     "*.ejs": "html"
+//   },
+//   "material-icon-theme.hidesExplorerArrows": true,
+//   "javascript.updateImportsOnFileMove.enabled": "always",
+//   "editor.fontSize": 15,
+//   "files.autoSave": "off",
+//   "typescript.updateImportsOnFileMove.enabled": "always",
+//   "editor.tabSize": 2,
+//   "terminal.integrated.rendererType": "dom",
+//   "terminal.external.linuxExec": "termite",
+//   "terminal.integrated.cursorStyle": "line",
+//   "workbench.colorTheme": "Dark++",
+//   "eslint.validate": ["javascript", "javascriptreact", "vue"],
+//   "editor.formatOnPaste": false,
+//   "editor.formatOnSave": false,
+//   // "javascript.validate.enable": false,
+//   // "standard.autoFixOnSave": true,
+//   "liveshare.featureSet": "insiders",
+//   "go.testFlags": ["-v"],
+// "go.formatTool": "gofmt",
+// "go.lintTool": "revive",
+//   "[javascript]": {
+//     "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   },
+//   "eslint.autoFixOnSave": true,
+//   "editor.formatOnType": false,
+//   "[json]": {
+//     "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   }
+// }

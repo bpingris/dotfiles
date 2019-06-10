@@ -3,8 +3,8 @@
 This repository contains useful informations about my setup
 
 En vrac:
-- fish with oh-my-fish (shell I use)
-- zsh with oh-my-zsh
+- fish with oh-my-fish ~~(shell I use)~~
+- zsh with oh-my-zsh (shell I use !)
 - vscode's extensions and settings
 - onivim (Vim but it's pretty)
 - a lot of scripts

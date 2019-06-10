@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-xinput set-prop 11 285 1

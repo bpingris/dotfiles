@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/benoit/go/src/gitlab.com/5in/platform/web-ui'
-let g:netrw_dirhist_2='/home/benoit/go/src/gitlab.com/5in/platform/web-ui/src'
-let g:netrw_dirhist_3='/home/benoit/go/src/gitlab.com/5in/platform/web-ui/src/components'
-let g:netrw_dirhist_4='/home/benoit/go/src/gitlab.com/5in/platform/web-ui/src/components/Globals'
-let g:netrw_dirhist_5='/home/benoit/go/src/gitlab.com/5in/platform/web-ui/src/components/Globals/Buefy'
