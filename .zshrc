@@ -1,154 +1,94 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# EXPORT
+export PATH="$PATH:$HOME/bin:$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.flutterio/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
-xset b off
+export EDITOR="nvim"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+export TERMINAL="konsole"
 
-export PATH="$PATH:/home/benoit/bin"
+# ALIAS
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/benoit/.oh-my-zsh"
+## Docker
+alias start_docker="sudo systemctl start docker"
+alias stop_docker="sudo systemctl stop docker"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+alias vim="nvim"
+alias vi="nvim"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+alias open="xdg-open"
+alias chmox="chmod +x"
+alias diskspace="df -P -kHl"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+alias myip="http -b ipinfo.io/ip"
+alias bc="bc -ql"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-
-alias blih="blih -u benoit.pingris@epitech.eu"
 alias ne="emacs -nw"
-alias chmox="chmod +x $@"
-alias xdg="xdg-open"
+alias ec="emacsclient"
 
-source $ZSH/antigen.zsh
+alias so="fzf | xargs -r nvim"
+alias sovs="fzf | xargs -r code"
+alias :q!="exit"
 
-# Antigen configuration
-#    (helper for zsh plugin and so on)
+# ANTIGEN
+source ~/.antigen/antigen.zsh
 
-function load_antigen {
-    antigen use oh-my-zsh
-    
-    antigen bundle git
-    antigen bundle heroku
-    antigen bundle npm
-    antigen bundle pip
-    antigen bundle sudo
-    
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle zsh-users/zsh-autosuggestions
-    
-    antigen theme geometry-zsh/geometry
-    
-    antigen apply
+load_antigen() {
+	antigen use oh-my-zsh
+	antigen bundle git
+	antigen bundle heroku
+	antigen bundle colored-man-pages
+	antigen bundle docker
+	antigen bundle docker-compose
+	antigen bundle node
 
-    GEOMETRY_PROMPT_PREFIX=""
+	antigen bundle zsh-users/zsh-autosuggestions
+	antigen bundle zsh-users/zsh-syntax-highlighting
+
+        GEOMETRY_PROMPT_PREFIX=""
+	antigen theme geometry-zsh/geometry
+
+	antigen apply
 }
 
 load_antigen
 
-# Some useful scripts
-
-function tarit {
-    # (c)reate g(z)ip (v)erbose (f)ile                                                    
-    tar czvf $1.tar.gz $1
+function killport {
+	re='^[0-9]+$'
+        if ! [[ $1 =~ $re ]] ; then
+           echo "Error: Port must be a number" >&2; return
+        fi
+        PROCS=$(lsof -t -i :$1)
+        kill -9 $PROCS
 }
 
-function untarit {
-    # (x)tract (z)e (v)ucking (f)ile                                                      
-    tar xzvf $1
-    rm -r $1
+function whatthecommit {
+	curl --silent --fail https://whatthecommit.com/index.txt
 }
 
-function numfiles {
-    if [ -z "$1" ]
-    then
-	DIR="."
-    else
-	DIR=$1
-    fi
-    N="$(ls $DIR | wc -l)"
-    echo "$N files in $DIR"
+function gigacommit {
+	git commit -m "$(whatthecommit)"
 }
 
 function backup {
-    cp -r "$1"{,.bak}
+	cp -r "$1"{,.bak}
+}
+
+function zsh_stats {
+      fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n20
+}
+
+
+###-tns-completion-start-###
+if [ -f /home/benoit/.tnsrc ]; then 
+    source /home/benoit/.tnsrc 
+fi
+###-tns-completion-end-###
+
+serveo () {
+    ssh -R 80:localhost:$1 serveo.net
+}
+
+jqless() {
+    jq -C . $1 | less -R
 }
