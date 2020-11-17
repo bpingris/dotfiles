@@ -1,32 +1,12 @@
-# Dotfile Benoît Pingris
+# Dotfiles Benoît Pingris
 
-This repository contains useful informations about my setup
+This repository contains useful informations about my setup.
 
-En vrac:
+- zsh with oh-my-zsh and powerlevel10k
+- neovim 0.5 (nightly)
 
--   fish with oh-my-fish ~~(shell I use)~~
--   zsh with oh-my-zsh (shell I use !)
--   vscode's extensions and settings
--   onivim (Vim but it's pretty)
--   a lot of scripts
 
-I'm using Manjaro 18.0.3. My desktop manager is LXQt with i3, the tilling manager (best combo)
+### neovim
 
-It also contains a script that is supposed to install all the required packages to run my setup
+![neovim](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/dekstop_vim.png)
 
-```bash
-chmod +x install.sh && ./install.sh
-```
-
-Some screenshots of my beautiful setup:
-
-### Neofetch
-
-![neofetch](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/neofetch.png)
-
-### Onivim
-
-![onivim](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/onivim.png)
-
-lolz
-go/src/gitlab.com/5in/REPO
