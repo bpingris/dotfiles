@@ -1,6 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/benoitp/work/perso/nextjs-blog/pages'
-let g:netrw_dirhist_3='/home/benoitp/work/perso/nextjs-blog'
-let g:netrw_dirhist_2='/home/benoitp/work/perso/nextjs-blog/pages'
-let g:netrw_dirhist_1='/home/benoitp/work/perso/nextjs-blog'
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/benoitp/.config/nvim/lua/plugins'
+let g:netrw_dirhist_5='/home/benoitp/.config/nvim/lua'
+let g:netrw_dirhist_4='/home/benoitp/.config/nvim'
+let g:netrw_dirhist_3='/home/benoitp/.config/nvim/lua/plugins'
+let g:netrw_dirhist_2='/home/benoitp/.config/nvim/lua'
+let g:netrw_dirhist_1='/home/benoitp/.config/nvim'
+let g:netrw_dirhist_0='/home/benoitp/.config/nvim/lua/plugins'
+let g:netrw_dirhist_9='/home/benoitp/.config/nvim/lua'
+let g:netrw_dirhist_8='/home/benoitp/.config/nvim'
+let g:netrw_dirhist_7='/home/benoitp/.config/nvim/lua/plugins'
