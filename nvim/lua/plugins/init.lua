@@ -7,14 +7,14 @@ paq {'savq/paq-nvim', opt=true}
 paq 'christianchiarulli/nvcode-color-schemes.vim'
 paq 'datwaft/bubbly.nvim'
 paq 'kyazdani42/nvim-web-devicons'
--- paq 'kyazdani42/nvim-tree.lua'
+paq 'kyazdani42/nvim-tree.lua'
 -- paq {'junegunn/fzf', hook=function() vim.cmd('call fzf#install()')end }
 -- paq 'junegunn/fzf.vim'
 
 -- paq 'neovim/nvim-lsp'
 -- paq 'neovim/nvim-lspconfig'
 -- paq 'nvim-lua/completion-nvim'
-paq {'ms-jpq/chadtree', branch='chad'} -- Run :CHADdeps after install
+-- paq {'ms-jpq/chadtree', branch='chad'} -- Run :CHADdeps after install
 paq 'nvim-lua/popup.nvim'
 paq 'nvim-lua/plenary.nvim'
 paq 'nvim-telescope/telescope.nvim'
@@ -27,6 +27,8 @@ paq 'tpope/vim-surround'
 
 paq 'pantharshit00/vim-prisma'
 
+paq 'honza/vim-snippets'
+
 -- end plugins
 
 
@@ -36,3 +38,4 @@ require'plugins.statusline'
 require'plugins.treesitter'
 require'plugins.telescope'
 require'plugins.coc'
+require'plugins.explorer'

@@ -46,7 +46,7 @@ K({
   {'i', '<C-a>', '<Home>'},
   {'i', '<C-e>', '<End>'},
 
-  {'n', '<C-b>', ':CHADopen<CR>'},
+  {'n', '<C-b>', ':NvimTreeToggle<CR>'},
   {'n', '<C-s>', ':w<CR>'},
   {'n', '<C-p>', ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = false}))<CR>", {silent=true}},
   {'n', '<S-j>', ':BufferPrevious<CR>'},
@@ -54,8 +54,8 @@ K({
   {'n', '<C-e>', ':BufferClose<CR>'},
   {'n', '<A-f>', ':Telescope live_grep<CR>'},
 
-  {'n', '<leader>t', ":lua require('terminal').toggle()<CR>"},
-  {'t', '<leader>t', "<C-\\><C-n>:lua require('terminal').toggle()<CR>"},
+  {'n', '<C-t>', ":lua require('terminal').toggle()<CR>"},
+  {'t', '<C-t>', "<C-\\><C-n>:lua require('terminal').toggle()<CR>"},
 
   {'v', '<leader>y', '"+y'},
 

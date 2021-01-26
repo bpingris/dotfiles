@@ -7,7 +7,7 @@ vim.g.coc_global_extensions = {
   'coc-prisma',
   'coc-emmet',
   'coc-css',
-  'coc-flutter',
+  'coc-flutter-tools',
   'coc-vetur',
   'coc-pairs',
 }

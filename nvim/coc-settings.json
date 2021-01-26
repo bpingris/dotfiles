@@ -9,5 +9,7 @@
     "dart"
   ],
   "flutter.sdk.flutter-lookup": "/var/lib/snapd/snap/bin/flutter",
-  "flutter.provider.hot-reload": true
+  "flutter.provider.hot-reload": true,
+  "flutter.provider.enableSnippet": true,
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips"
 }
