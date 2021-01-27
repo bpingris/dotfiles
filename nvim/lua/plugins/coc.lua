@@ -8,6 +8,5 @@ vim.g.coc_global_extensions = {
   'coc-emmet',
   'coc-css',
   'coc-flutter-tools',
-  'coc-vetur',
-  'coc-pairs',
+  'coc-vetur'
 }

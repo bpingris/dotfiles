@@ -1,3 +1,5 @@
+local w, o = vim.w, vim.o
+
 function K(keybinds)
 	for index, keybind in pairs(keybinds) do
 		if(keybind[4] == nil) then
@@ -33,6 +35,17 @@ function show_docs()
     end
 end
 
+function togglezen()
+  w.list           = not w.list
+  w.number         = not w.number
+  w.relativenumber = not w.relativenumber
+  w.cursorline     = not w.cursorline
+  w.cursorcolumn   = not w.cursorcolumn
+  w.colorcolumn    = w.colorcolumn == '0' and '80' or '0'
+  o.laststatus     = o.laststatus == 2 and 0 or 2
+  o.ruler          = not o.ruler
+end
+
 K({
   {'i', 'jk', '<Esc>'},
   {'i', '<C-s>', '<Esc>:w<CR>'},
@@ -48,11 +61,12 @@ K({
 
   {'n', '<C-b>', ':NvimTreeToggle<CR>'},
   {'n', '<C-s>', ':w<CR>'},
-  {'n', '<C-p>', ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = false}))<CR>", {silent=true}},
+  {'n', '<C-p>', ":Files<CR>", {silent=true}},
   {'n', '<S-j>', ':BufferPrevious<CR>'},
   {'n', '<S-k>', ':BufferNext<CR>'},
   {'n', '<C-e>', ':BufferClose<CR>'},
   {'n', '<A-f>', ':Telescope live_grep<CR>'},
+  {'n', '<leader>z', ':lua togglezen()<CR>', {silent=true}},
 
   {'n', '<C-t>', ":lua require('terminal').toggle()<CR>"},
   {'t', '<C-t>', "<C-\\><C-n>:lua require('terminal').toggle()<CR>"},

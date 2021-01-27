@@ -41,3 +41,4 @@ o.mouse = 'a'
 cmd('set smartindent')
 
 g.python3_host_prog = '/usr/bin/python3'
+

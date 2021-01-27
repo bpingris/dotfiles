@@ -6,6 +6,7 @@ telescope.setup {
     file_ignore_patterns = {'.git/*'},
     shorten_path = true,
     winblend = 0,
+    find_command = { "rg", "-i", "--hidden", "--files", "-g", "!.git" },
     mappings = {
       i = {
         ['<C-x>'] = false,
