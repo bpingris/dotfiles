@@ -61,7 +61,7 @@ alias vpn="(openpyn uk >/dev/null 2>&1 &); while ! ip a show dev tun0 up >/dev/n
 alias start_mongo="docker run --rm -p 27017:27017 --name mongodb  -v \"/home/benoitp/work/data/db:/data/db\" mongo"	
 alias start_pg="docker run --rm --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres"	
 alias ssh="kitty +kitten ssh"
-alias pyenv="source venv/bin/activate"
+alias pyenv="source .venv/bin/activate"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
