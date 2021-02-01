@@ -40,5 +40,9 @@ o.mouse = 'a'
 
 cmd('set smartindent')
 
+cmd('set undodir=$HOME/.undodir')
+
+cmd('set undofile')
+
 g.python3_host_prog = '/usr/bin/python3'
 

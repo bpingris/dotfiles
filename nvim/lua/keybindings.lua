@@ -1,4 +1,4 @@
-local w, o = vim.w, vim.o
+local w, o, cmd = vim.w, vim.o, vim.cmd
 
 function K(keybinds)
 	for index, keybind in pairs(keybinds) do
@@ -46,6 +46,16 @@ function togglezen()
   o.ruler          = not o.ruler
 end
 
+cmd [[
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NvimTree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+]]
+
+
 K({
   {'i', 'jk', '<Esc>'},
   {'i', '<C-s>', '<Esc>:w<CR>'},
@@ -61,11 +71,11 @@ K({
 
   {'n', '<C-b>', ':NvimTreeToggle<CR>'},
   {'n', '<C-s>', ':w<CR>'},
-  {'n', '<C-p>', ":Files<CR>", {silent=true}},
+  {'n', '<C-p>', ":call FZFOpen(':Files')<CR>", {silent=true}},
   {'n', '<S-j>', ':BufferPrevious<CR>'},
   {'n', '<S-k>', ':BufferNext<CR>'},
   {'n', '<C-e>', ':BufferClose<CR>'},
-  {'n', '<A-f>', ':Telescope live_grep<CR>'},
+  {'n', '<A-f>', ':Rg <CR>'},
   {'n', '<leader>z', ':lua togglezen()<CR>', {silent=true}},
 
   {'n', '<C-t>', ":lua require('terminal').toggle()<CR>"},

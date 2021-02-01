@@ -1,12 +1,13 @@
 {
-  "python.jediPath": "/home/benoitp/.local/lib/python3.9/site-packages",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescriptreact",
     "prisma",
     "json",
-    "dart"
+    "dart",
+    "python",
+    "python3"
   ],
   "flutter.sdk.flutter-lookup": "/var/lib/snapd/snap/bin/flutter",
   "flutter.provider.hot-reload": true,
