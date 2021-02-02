@@ -96,7 +96,7 @@ K({
   {'x', '<leader>a', '<Plug>(coc-codeaction-selected)', {noremap= false}},
 
   {'x', '<leader>f', '<Plug>(coc-format-selected)', {noremap = false}},
-  {'n', '<leader>f', '<Plug>(coc-format-selected)<CR>', {noremap = false}},
+  {'n', '<leader>f', '<Plug>(coc-format)', {noremap = false}},
 
 
   -- End
