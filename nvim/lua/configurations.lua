@@ -6,37 +6,48 @@
 ]]
 local g, o, wo, bo, cmd = vim.g, vim.o, vim.wo, vim.bo, vim.cmd
 
+function glob(opt, v)
+  o[opt] = v
+end
+
+function win(opt, v)
+  wo[opt] = v
+  glob(opt, v)
+end
+
+function buf(opt, v)
+  bo[opt] = v
+  glob(opt, v)
+end
+
 g.mapleader = ' '
-wo.wrap = false
-wo.number = true
-wo.relativenumber = true
+win('wrap', false)
+win('number', true)
+win('relativenumber', true)
 
 cmd('filetype plugin indent on')
 cmd('syntax enable')
 
-o.incsearch = true
-o.hlsearch = false
+glob('termguicolors', true)
+glob('incsearch', true)
+glob('hlsearch', false)
+glob('backup', false)
+glob('writebackup', false)
+glob('swapfile', false)
+glob('encoding', 'utf-8')
 
-o.backup = false
-o.writebackup = false
-o.swapfile = false
-o.encoding = 'utf-8'
+buf('expandtab', true)
+buf('tabstop', 2)
+buf('shiftwidth', 2)
+buf('softtabstop', 2)
 
-o.expandtab = true
-bo.expandtab = true
-o.tabstop = 2
-bo.tabstop = 2
-o.shiftwidth = o.tabstop
-bo.shiftwidth = o.tabstop
-o.softtabstop = o.tabstop
-bo.softtabstop = o.tabstop
+glob('ignorecase', true)
+glob('smartcase', true)
+glob('lazyredraw', true)
+glob('hidden', true)
+glob('mouse', 'a')
 
-o.ignorecase = true
-o.smartcase = true
-o.lazyredraw = true
-o.hidden = true
-o.mouse = 'a'
-
+win('scrolloff', 4)
 
 cmd('set smartindent')
 
