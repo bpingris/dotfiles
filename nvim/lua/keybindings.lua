@@ -55,7 +55,6 @@ function! FZFOpen(command_str)
 endfunction
 ]]
 
-
 K({
   {'i', 'jk', '<Esc>'},
   {'i', '<C-s>', '<Esc>:w<CR>'},
@@ -77,9 +76,10 @@ K({
   {'n', '<C-e>', ':BufferClose<CR>'},
   {'n', '<A-f>', ':Rg <CR>'},
   {'n', '<leader>z', ':lua togglezen()<CR>', {silent=true}},
-
-  {'n', '<C-t>', ":lua require('terminal').toggle()<CR>"},
-  {'t', '<C-t>', "<C-\\><C-n>:lua require('terminal').toggle()<CR>"},
+  {'n', '<Up>', ':resize +2<CR>', {noremap=true}},
+  {'n', '<Down>', ':resize -2<CR>', {noremap=true}},
+  {'n', '<Left>', ':vertical resize -2<CR>', {noremap=true}},
+  {'n', '<Right>', ':vertical resize +2<CR>', {noremap=true}},
 
   {'v', '<leader>y', '"+y'},
 
