@@ -81,6 +81,9 @@ K({
   {'n', '<Left>', ':vertical resize -2<CR>', {noremap=true}},
   {'n', '<Right>', ':vertical resize +2<CR>', {noremap=true}},
 
+  {'n', '<C-t>', ":lua require('terminal').toggle()<CR>"},
+  {'t', '<C-t>', "<C-\\><C-n>:lua require('terminal').toggle()<CR>"},
+
   {'v', '<leader>y', '"+y'},
 
   {"x", "<S-k>", ":move-2<CR>='[gv"},

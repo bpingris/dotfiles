@@ -22,13 +22,14 @@ paq 'tpope/vim-commentary'
 
 paq 'honza/vim-snippets'
 paq 'mhinz/vim-signify'
+paq 'dart-lang/dart-vim-plugin'
 
-paq 'windwp/nvim-autopairs'
+paq 'jiangmiao/auto-pairs'
 paq 'mbbill/undotree'
 
 -- end plugins
 
-require('nvim-autopairs').setup()
+-- require('nvim-autopairs').setup()
 
 -- colorscheme
 vim.cmd [[ set background=dark ]]
@@ -57,6 +58,7 @@ require'nvim-treesitter.configs'.setup{
     enable = true
   }
 }
+
 -- fzf
 vim.cmd [[ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.7, 'highlight': 'Comment' } } ]]
 vim.cmd [[ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'" ]]
