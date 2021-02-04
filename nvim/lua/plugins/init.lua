@@ -79,5 +79,3 @@ vim.g.coc_global_extensions = {
 
 -- explorer
 vim.cmd('let g:nvim_tree_follow = 1')
-vim.cmd('let g:nvim_tree_auto_close = 1')
-
