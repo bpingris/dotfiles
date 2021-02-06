@@ -1,5 +1,7 @@
 local w, o, cmd = vim.w, vim.o, vim.cmd
 
+local M = {}
+
 function K(keybinds)
 	for index, keybind in pairs(keybinds) do
 		if(keybind[4] == nil) then
@@ -62,9 +64,6 @@ K({
   {'i', '<C-j>', '<down>'},
   {'i', '<C-k>', '<up>'},
   {'i', '<C-l>', '<right>'},
-  {'i', '<C-n>', 'pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<C-n>" : coc#refresh()', {expr = true}},
-  {'i', '<C-space>', 'coc#refresh()', {expr=true}},
-  {'i', '<Tab>', 'pumvisible() ? coc#_select_confirm() : "<Tab>"', {expr = true}},
   {'i', '<C-a>', '<Home>'},
   {'i', '<C-e>', '<End>'},
 
@@ -100,6 +99,10 @@ K({
 
   {'x', '<leader>f', '<Plug>(coc-format-selected)', {noremap = false}},
   {'n', '<leader>f', '<Plug>(coc-format)', {noremap = false}},
+  {'i', '<Tab>', "pumvisible() ? '<C-n>' : '<Tab>'", {expr=true, noremap=true}},
+  {'i', '<C-n>', 'pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<C-n>" : coc#refresh()', {expr = true}},
+  {'i', '<C-space>', 'coc#refresh()', {expr=true}},
+  {'i', '<Tab>', 'pumvisible() ? coc#_select_confirm() : "<Tab>"', {expr = true}},
 
 
   -- End
@@ -107,3 +110,6 @@ K({
   {'t', 'jk', '<C-\\><C-n>'},
 })
 
+M.K = K
+
+return M

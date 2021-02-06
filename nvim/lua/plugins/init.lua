@@ -24,12 +24,16 @@ paq 'honza/vim-snippets'
 paq 'mhinz/vim-signify'
 paq 'dart-lang/dart-vim-plugin'
 
-paq 'jiangmiao/auto-pairs'
 paq 'mbbill/undotree'
+
+-- -- paq "neovim/nvim-lspconfig"
+-- -- paq "hrsh7th/nvim-compe"
+-- -- paq "glepnir/lspsaga.nvim"
+paq "tmsvg/pear-tree"
 
 -- end plugins
 
--- require('nvim-autopairs').setup()
+-- require('plugins.lsp')
 
 -- colorscheme
 vim.cmd [[ set background=dark ]]
@@ -55,6 +59,9 @@ vim.g.bubbly_palette = {
 require'nvim-treesitter.configs'.setup{
   ensure_installed = 'all',
   highlight = {
+    enable = true
+  },
+  indent = {
     enable = true
   }
 }
