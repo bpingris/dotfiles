@@ -4,6 +4,7 @@ local Paq = require('paq-nvim')
 local paq = Paq.paq
 
 paq {'savq/paq-nvim', opt=true}
+paq 'nvim-lua/plenary.nvim'
 
 paq 'christianchiarulli/nvcode-color-schemes.vim'
 paq 'datwaft/bubbly.nvim'
@@ -21,7 +22,7 @@ paq 'tpope/vim-surround'
 paq 'tpope/vim-commentary'
 
 paq 'honza/vim-snippets'
-paq 'mhinz/vim-signify'
+paq 'lewis6991/gitsigns.nvim'
 paq 'dart-lang/dart-vim-plugin'
 
 paq 'mbbill/undotree'
@@ -88,3 +89,17 @@ vim.g.coc_global_extensions = {
 
 -- explorer
 vim.cmd('let g:nvim_tree_follow = 1')
+
+-- gitsigns
+require('gitsigns').setup({
+  signs = {
+    add          = {hl = 'GitGutterAdd'},
+    change       = {hl = 'GitGutterChange'},
+    delete       = {hl = 'GitGutterDelete'},
+    topdelete    = {hl = 'GitGutterDelete'},
+    changedelete = {hl = 'GitGutterChange'},
+
+  },
+  numhl = false
+})
+

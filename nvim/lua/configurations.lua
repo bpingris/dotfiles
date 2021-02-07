@@ -54,6 +54,7 @@ cmd('set smartindent')
 cmd('set undodir=$HOME/.undodir')
 
 cmd('set undofile')
+cmd('set signcolumn=yes')
 
 g.python3_host_prog = '/usr/bin/python3'
 
