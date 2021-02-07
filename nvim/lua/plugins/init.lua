@@ -25,6 +25,7 @@ paq 'mhinz/vim-signify'
 paq 'dart-lang/dart-vim-plugin'
 
 paq 'mbbill/undotree'
+paq 'fatih/vim-go'
 
 -- -- paq "neovim/nvim-lspconfig"
 -- -- paq "hrsh7th/nvim-compe"
@@ -40,16 +41,17 @@ vim.cmd [[ set background=dark ]]
 vim.cmd [[ colorscheme palenight ]]
 
 -- statusline
+
 vim.g.bubbly_palette = {
-  background = "#34343c",
-  foreground = "#c5cdd9",
-  black = "#3e4249",
-  red = "#ec7279",
-  green = "#a0c980",
-  yellow = "#deb974",
-  blue = "#6cb6eb",
-  purple = "#d38aea",
-  cyan = "#5dbbc1",
+  background = "#292D3E",
+  foreground = "#959dcb",
+  black = "#434759",
+  red = "#f07178",
+  green = "#c3e88d",
+  yellow = "#ffcb6b",
+  blue = "#82aaff",
+  purple = "#c792ea",
+  cyan = "#89ddff",
   white = "#c5cdd9",
   lightgrey = "#57595e",
   darkgrey = "#404247",

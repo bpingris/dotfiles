@@ -34,7 +34,7 @@ plugins=(git systemd zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-path=(~/bin ~/bin/nvim/bin ~/.npm-global/bin $path)
+path=(~/bin ~/bin/nvim/bin ~/.npm-global/bin ~/go/bin $path)
 # User configuration
 export LANG=en_US.UTF-8
 
@@ -69,3 +69,6 @@ alias pyenv="source .venv/bin/activate"
 # fnm
 export PATH=/home/benoitp/.fnm:$PATH
 eval "`fnm env`"
+
+GOPATH=$HOME/go
+GOBIN=$HOME/go/bin
