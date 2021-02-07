@@ -3,35 +3,35 @@ vim.cmd('packadd paq-nvim')
 local Paq = require('paq-nvim')
 local paq = Paq.paq
 
-paq {'savq/paq-nvim', opt=true}
-paq 'nvim-lua/plenary.nvim'
+-- paq {'savq/paq-nvim', opt=true}
+-- paq 'nvim-lua/plenary.nvim'
 
-paq 'christianchiarulli/nvcode-color-schemes.vim'
-paq 'datwaft/bubbly.nvim'
-paq 'kyazdani42/nvim-web-devicons'
-paq 'kyazdani42/nvim-tree.lua'
+-- paq 'christianchiarulli/nvcode-color-schemes.vim'
+-- paq 'datwaft/bubbly.nvim'
+-- paq 'kyazdani42/nvim-web-devicons'
+-- paq 'kyazdani42/nvim-tree.lua'
 
-paq {'junegunn/fzf', hook=function() vim.cmd(':call fzf#install()') end}
-paq 'junegunn/fzf.vim'
+-- paq {'junegunn/fzf', hook=function() vim.cmd(':call fzf#install()') end}
+-- paq 'junegunn/fzf.vim'
 
-paq {'nvim-treesitter/nvim-treesitter', hook=function() vim.cmd(':TSUpdate') end}
-paq {'neoclide/coc.nvim', branch='release'}
-paq 'romgrk/barbar.nvim'
-paq 'tpope/vim-fugitive'
-paq 'tpope/vim-surround'
-paq 'tpope/vim-commentary'
+-- paq {'nvim-treesitter/nvim-treesitter', hook=function() vim.cmd(':TSUpdate') end}
+-- paq {'neoclide/coc.nvim', branch='release'}
+-- paq 'romgrk/barbar.nvim'
+-- paq 'tpope/vim-fugitive'
+-- paq 'tpope/vim-surround'
+-- paq 'tpope/vim-commentary'
 
-paq 'honza/vim-snippets'
-paq 'lewis6991/gitsigns.nvim'
-paq 'dart-lang/dart-vim-plugin'
+-- paq 'honza/vim-snippets'
+-- paq 'lewis6991/gitsigns.nvim'
+-- paq 'dart-lang/dart-vim-plugin'
 
-paq 'mbbill/undotree'
-paq 'fatih/vim-go'
+-- paq 'mbbill/undotree'
+-- paq 'fatih/vim-go'
 
--- -- paq "neovim/nvim-lspconfig"
--- -- paq "hrsh7th/nvim-compe"
--- -- paq "glepnir/lspsaga.nvim"
-paq "tmsvg/pear-tree"
+-- -- -- paq "neovim/nvim-lspconfig"
+-- -- -- paq "hrsh7th/nvim-compe"
+-- -- -- paq "glepnir/lspsaga.nvim"
+-- paq "tmsvg/pear-tree"
 
 -- end plugins
 
