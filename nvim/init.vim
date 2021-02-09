@@ -4,7 +4,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -16,6 +16,8 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'romgrk/barbar.nvim'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 
 call plug#end()
 
