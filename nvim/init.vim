@@ -18,6 +18,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'romgrk/barbar.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
