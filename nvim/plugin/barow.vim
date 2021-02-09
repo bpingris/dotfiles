@@ -16,7 +16,7 @@ let g:barow = {
       \  'statusline': ['Barow', 'BarowNC'],
       \  'tabline': ['BarowTab', 'BarowTabSel', 'BarowTabFill'],
       \  'buf_name': {
-      \    'empty': 'coucou',
+      \    'empty': 'no file',
       \    'hi': ['BarowBufName', 'BarowBufNameNC']
       \  },
       \  'read_only': {
