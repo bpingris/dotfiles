@@ -14,9 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'doums/barow'
-Plug 'BenoitPingris/barowLSP'
-Plug 'doums/barowGit'
+Plug 'romgrk/barbar.nvim'
 
 call plug#end()
 
@@ -46,6 +44,9 @@ nnoremap <leader>u :UndotreeShow<CR>
 vnoremap <leader>y "+y
 nnoremap <C-b> :NvimTreeToggle<CR>
 nnoremap Q <Nop>
+nnoremap J :BufferPrevious<CR>
+nnoremap K :BufferNext<CR>
+nmap <C-e> :BufferClose<CR>
 
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
