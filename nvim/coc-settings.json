@@ -8,12 +8,11 @@
     "dart",
     "python",
     "python3",
-    "vue"
+    "vue",
+    "go"
   ],
-  "flutter.sdk.flutter-lookup": "/var/lib/snapd/snap/bin/flutter",
   "flutter.provider.hot-reload": true,
   "flutter.provider.enableSnippet": true,
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
   "languageserver": {
     "golang": {
       "command": "gopls",

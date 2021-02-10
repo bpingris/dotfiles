@@ -12,12 +12,15 @@ Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'romgrk/barbar.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
+" LSP stuff
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
 call plug#end()
 
