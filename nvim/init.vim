@@ -13,7 +13,7 @@ Plug 'mbbill/undotree'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'kyazdani42/nvim-web-devicons', {'commit': 'aaffb87b5a640d15a566d9af9e74baafcf9ec016'}
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'romgrk/barbar.nvim'
 Plug 'p00f/nvim-ts-rainbow'
