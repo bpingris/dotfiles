@@ -1,6 +1,11 @@
 local lspconfig = require('lspconfig')
 local saga = require 'lspsaga'
 
+saga.init_lsp_saga({
+    error_sign = '▬',
+    warn_sign = '▴'
+})
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -32,15 +37,12 @@ require'compe'.setup {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local on_attach = function(a, b)
-end
 
 local servers = {'tsserver', 'pyls', 'rust_analyzer', 'gopls', 'vuels'}
 
 for _, server in ipairs(servers) do
     lspconfig[server].setup{on_attach=function(a, b)
             print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
-            on_attach(a, b)
         end,
         capabilities = capabilities,
     }
@@ -63,9 +65,8 @@ function goimports(timeoutms)
       end
     end
 
-    vim.lsp.buf.formatting()
+    vim.lsp.buf.formatting_sync()
 end
 
 vim.cmd[[autocmd BufWritePre *.go lua goimports(1000)]]
 
-saga.init_lsp_saga()

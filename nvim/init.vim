@@ -56,6 +56,7 @@ nnoremap Q <Nop>
 nnoremap J :BufferPrevious<CR>
 nnoremap K :BufferNext<CR>
 nmap <C-e> :BufferClose<CR>
+nmap <silent><leader>/ :noh<CR>
 
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
