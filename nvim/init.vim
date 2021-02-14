@@ -60,7 +60,7 @@ nnoremap <C-b> :NvimTreeToggle<CR>
 nnoremap Q <Nop>
 nmap <silent>J :bp<CR>
 nmap <silent>K :bn<CR>
-nmap <C-e> :bd<CR>
+nmap <silent><C-e> :bd<CR>
 nmap <silent><leader>/ :noh<CR>
 
 inoremap <C-j> <Down>
@@ -74,19 +74,9 @@ tnoremap <silent> <A-d> <C-\><C-n>:lua require('terminal').toggle()<CR>
 tnoremap <silent> jk <C-\><C-n>
 nnoremap <silent> <A-d> :lua require('terminal').toggle()<CR>
 
-nnoremap <C-p> :Files<CR>
-nnoremap <A-f> :Ag<CR>
-
-fun! TrimWhiteSpace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
-augroup beben
-    autocmd!
-    autocmd BufWritePre * :call TrimWhiteSpace()
-augroup end
+nmap <C-p> :Files<CR>
+nmap <A-f> :Ag<CR>
+nmap <leader>p :Buffers<CR>
 
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
 let g:nvim_tree_follow = 1
