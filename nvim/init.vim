@@ -12,7 +12,6 @@ Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'romgrk/barbar.nvim'
@@ -21,9 +20,11 @@ Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 
 " LSP stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -66,7 +67,11 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
 tnoremap <silent> <A-d> <C-\><C-n>:lua require('terminal').toggle()<CR>
+tnoremap <silent> jk <C-\><C-n>
 nnoremap <silent> <A-d> :lua require('terminal').toggle()<CR>
+
+nnoremap <C-p> :Files<CR>
+nnoremap <A-f> :Ag<CR>
 
 fun! TrimWhiteSpace()
     let l:save = winsaveview()

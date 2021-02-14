@@ -12,7 +12,7 @@
 "             \]
 
 " inoremap <silent><expr> <C-space> coc#refresh()
-" inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+" inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : \"<Tab>\"
 " nnoremap <silent> <leader>f <Plug>(coc-format)
 " vnoremap <silent> <leader>f <Plug>(coc-format-selected)
 " nnoremap <silent> <leader>a <Plug>(coc-codeaction)

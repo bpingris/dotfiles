@@ -1,10 +1,10 @@
 local lspconfig = require('lspconfig')
-local saga = require 'lspsaga'
+-- local saga = require 'lspsaga'
 
-saga.init_lsp_saga({
-    error_sign = '▬',
-    warn_sign = '▴'
-})
+-- saga.init_lsp_saga({
+--     error_sign = '▬',
+--     warn_sign = '▴'
+-- })
 
 require'compe'.setup {
   enabled = true;
