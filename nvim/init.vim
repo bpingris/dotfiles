@@ -14,7 +14,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'romgrk/barbar.nvim'
+" Plug 'romgrk/barbar.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 
@@ -25,6 +25,10 @@ Plug 'hrsh7th/vim-vsnip'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'doums/barow'
+Plug 'BenoitPingris/barowLSP'
+Plug 'doums/barowGit'
 
 call plug#end()
 
@@ -54,14 +58,14 @@ nnoremap <leader>u :UndotreeShow<CR>
 vnoremap <leader>y "+y
 nnoremap <C-b> :NvimTreeToggle<CR>
 nnoremap Q <Nop>
-nnoremap J :BufferPrevious<CR>
-nnoremap K :BufferNext<CR>
-nmap <C-e> :BufferClose<CR>
+nmap <silent>J :bp<CR>
+nmap <silent>K :bn<CR>
+nmap <C-e> :bd<CR>
 nmap <silent><leader>/ :noh<CR>
 
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
-inoremap <C-h> <Left>
+inoremap <C-h> <C-o>h
 inoremap <C-l> <Right>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
