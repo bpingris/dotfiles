@@ -11,12 +11,10 @@
     "vue",
     "go"
   ],
-  "flutter.provider.hot-reload": true,
-  "flutter.provider.enableSnippet": true,
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": ["go.mod"],
       "filetypes": ["go"],
       "initializationOptions": {
         "usePlaceholders": true
