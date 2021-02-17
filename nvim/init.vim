@@ -22,9 +22,9 @@ Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-" Plug 'hrsh7th/nvim-compe'
-" Plug 'hrsh7th/vim-vsnip'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

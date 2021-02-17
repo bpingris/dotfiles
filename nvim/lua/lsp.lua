@@ -1,42 +1,39 @@
 local lspconfig = require('lspconfig')
 
--- require'compe'.setup {
---   enabled = true;
---   autocomplete = true;
---   debug = false;
---   min_length = 1;
---   preselect = 'enable';
---   throttle_time = 80;
---   source_timeout = 200;
---   incomplete_delay = 400;
---   max_abbr_width = 100;
---   max_kind_width = 100;
---   max_menu_width = 100;
---   documentation = true;
-
---   source = {
---     path = true;
---     buffer = true;
---     calc = true;
---     vsnip = true;
---     nvim_lsp = true;
---     nvim_lua = true;
---     spell = true;
---     tags = true;
---     snippets_nvim = true;
---     treesitter = true;
---   };
--- }
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local servers = {'tsserver', 'pyls', 'gopls', 'vuels'}
 
-local servers = {'tsserver', 'pyls', 'rust_analyzer', 'gopls', 'vuels'}
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
 
-for _, server in ipairs(servers) do
-    lspconfig[server].setup{on_attach=function(a, b)
-            print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
+}
+
+local on_attach = function(client, bufnr)
             vim.cmd [[
             set completeopt=menuone,noinsert,noselect
             set shortmess+=c
@@ -55,9 +52,17 @@ for _, server in ipairs(servers) do
             nnoremap d[ :lua vim.lsp.diagnostic.goto_prev()<CR>
             nnoremap d] :lua vim.lsp.diagnostic.goto_next()<CR>
 
-            inoremap <silent><expr> <C-Space> <Plug>(completion_trigger)
+            imap <silent><expr> <c-Space> compe#complete()
+            inoremap <silent><expr> <Tab>      compe#confirm('<Tab>')
+            inoremap <silent><expr> <C-e>     compe#close('<C-e>')
             ]]
-            require'completion'.on_attach(a, b)
+        end
+
+for _, server in ipairs(servers) do
+    lspconfig[server].setup{
+        on_attach=function(client, buf)
+            print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
+            on_attach(client, buf)
         end,
         capabilities = capabilities,
     }
