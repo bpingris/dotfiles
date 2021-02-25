@@ -3,7 +3,6 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = {'tsserver', 'pyls', 'gopls', 'vuels'}
 
 require'compe'.setup {
   enabled = true;
@@ -33,7 +32,8 @@ require'compe'.setup {
   };
 }
 
-local on_attach = function(client, bufnr)
+local on_attach = function(server, client, bufnr)
+            print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
             vim.cmd [[
             set completeopt=menuone,noinsert,noselect
             set shortmess+=c
@@ -58,11 +58,12 @@ local on_attach = function(client, bufnr)
             ]]
         end
 
+local servers = {'tsserver', 'pyls', 'gopls', 'vuels', 'svelte'}
+
 for _, server in ipairs(servers) do
     lspconfig[server].setup{
         on_attach=function(client, buf)
-            print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
-            on_attach(client, buf)
+            on_attach(server, client, buf)
         end,
         capabilities = capabilities,
     }

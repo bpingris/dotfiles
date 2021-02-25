@@ -33,6 +33,8 @@ Plug 'doums/barow'
 Plug 'BenoitPingris/barowLSP'
 Plug 'doums/barowGit'
 
+Plug 'evanleck/vim-svelte'
+
 call plug#end()
 
 colorscheme palenight
