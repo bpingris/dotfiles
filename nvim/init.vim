@@ -67,7 +67,7 @@ nmap <silent>J :bp<CR>
 nmap <silent>K :bn<CR>
 nmap <silent><C-e> :bd<CR>
 nmap <silent><leader>/ :noh<CR>
-
+nnoremap <C-[> <C-^> :echo expand("%")<CR>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <C-o>h
