@@ -23,12 +23,12 @@ Do not use the `xinput` commands, wont work on every machine as devices' ID won'
 But, do the following:
 - create a new file `/etc/X11/xorg.conf.d/90-touchpad.conf`
 - add the following:
-    - ```
-    Section "InputClass"
-            Identifier "touchpad"
-            MatchIsTouchpad "on"
-            Driver "libinput"
-            Option "Tapping" "on"
-        Option "TappingButtonMap" "lrm"
-    EndSection
-    ```
+```
+Section "InputClass"
+    Identifier "touchpad"
+    MatchIsTouchpad "on"
+    Driver "libinput"
+    Option "Tapping" "on"
+Option "TappingButtonMap" "lrm"
+EndSection
+```
