@@ -1,9 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -14,7 +11,6 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'romgrk/barbar.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 
@@ -33,11 +29,16 @@ Plug 'doums/barow'
 Plug 'BenoitPingris/barowLSP'
 Plug 'doums/barowGit'
 
+Plug 'ayu-theme/ayu-vim'
+Plug 'ulwlu/elly.vim'
+
 Plug 'evanleck/vim-svelte'
 
 call plug#end()
 
-colorscheme palenight
+set termguicolors
+let ayucolor="dark"
+colorscheme elly
 
 lua << EOF
 require('gitsigns').setup({
@@ -67,7 +68,6 @@ nmap <silent>J :bp<CR>
 nmap <silent>K :bn<CR>
 nmap <silent><C-e> :bd<CR>
 nmap <silent><leader>/ :noh<CR>
-nnoremap <C-[> <C-^> :echo expand("%")<CR>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <C-o>h
