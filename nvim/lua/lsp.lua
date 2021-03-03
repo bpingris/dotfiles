@@ -27,7 +27,6 @@ require'compe'.setup {
     nvim_lua = true;
     spell = true;
     tags = true;
-    snippets_nvim = true;
     treesitter = true;
   };
 }
@@ -68,6 +67,24 @@ for _, server in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
+require("flutter-tools").setup {
+  flutter_outline = {
+    highlight = "NonText",
+    enabled = true,
+  },
+  outline = {
+    open_cmd = "30vnew",
+  },
+  lsp = {
+    on_attach = function(client,buf)
+        on_attach('dartls', client, buf)
+    end,
+    capabilities = capabilities
+  }
+}
+
+
 
 function goimports(timeoutms)
     local context = { source = { organizeImports = true } }

@@ -18,6 +18,7 @@ Plug 'hrsh7th/vim-vsnip'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 
 " Plug 'doums/barow'
 " Plug 'BenoitPingris/barowLSP'
@@ -28,6 +29,7 @@ Plug 'ulwlu/elly.vim'
 
 Plug 'evanleck/vim-svelte'
 Plug 'bagrat/vim-buffet'
+Plug 'akinsho/flutter-tools.nvim'
 
 call plug#end()
 
