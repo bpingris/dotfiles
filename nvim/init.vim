@@ -19,14 +19,15 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'doums/barow'
-Plug 'BenoitPingris/barowLSP'
-Plug 'doums/barowGit'
+" Plug 'doums/barow'
+" Plug 'BenoitPingris/barowLSP'
+" Plug 'doums/barowGit'
 
 Plug 'ayu-theme/ayu-vim'
 Plug 'ulwlu/elly.vim'
 
 Plug 'evanleck/vim-svelte'
+Plug 'bagrat/vim-buffet'
 
 call plug#end()
 
