@@ -8,7 +8,7 @@ This repository contains useful informations about my setup.
 
 ### neovim
 
-![neovim](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/desktop_vim.png)
+![neovim](https://i.imgur.com/OcdUiRw.png)
 
 
 ### i3
