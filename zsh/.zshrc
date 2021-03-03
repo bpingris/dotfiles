@@ -34,7 +34,7 @@ plugins=(git systemd zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-path=(~/bin ~/bin/nvim/bin ~/.npm-global/bin ~/go/bin $path)
+path=(~/bin ~/bin/nvim/bin ~/.npm-global/bin ~/go/bin ~/work/flutter/bin $path)
 # User configuration
 export LANG=en_US.UTF-8
 
