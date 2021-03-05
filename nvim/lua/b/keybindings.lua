@@ -36,8 +36,8 @@ nnoremap {"Q", "<Nop>"}
 nnoremap {"<leader>/", ":noh<CR>"}
 
 nnoremap {"<A-f>", ":call FZFOpen(':Ag')<CR>"}
-nnoremap {"<C-p>", ":call FZFOpen(':GitFiles')<CR>"}
-nnoremap {"<leader>p", ":call FZFOpen(':Files')<CR>"}
+nnoremap {"<C-p>", ":call FZFOpen(':Files')<CR>"}
+nnoremap {"<leader>p", ":call FZFOpen(':GitFiles')<CR>"}
 
 nnoremap {"<C-b>", ":NvimTreeToggle<CR>"}
 
