@@ -3,7 +3,6 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -31,38 +30,24 @@ require'compe'.setup {
   };
 }
 
-local on_attach = function(server, client, bufnr)
-            print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
-            vim.cmd [[
-            set completeopt=menuone,noinsert,noselect
-            set shortmess+=c
+require'lspsaga'.init_lsp_saga{
+    error_sign = '▬',
+    warn_sign = '▴',
+    hint_sign = '⬧',
+    infor_sign = '🛈',
 
-            let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+}
 
-            nnoremap gd :lua vim.lsp.buf.definition()<CR>
-            nnoremap gi :lua vim.lsp.buf.implementation()<CR>
-            nnoremap gr :lua vim.lsp.buf.references()<CR>
-            nnoremap gn :lua vim.lsp.buf.rename()<CR>
-            nnoremap gh :lua vim.lsp.buf.hover()<CR>
-            nnoremap gs :lua vim.lsp.buf.signature_help()<CR>
-            nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>
-            nnoremap <leader>f :lua vim.lsp.buf.formatting()<CR>
-            nnoremap <leader>s :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-            nnoremap d[ :lua vim.lsp.diagnostic.goto_prev()<CR>
-            nnoremap d] :lua vim.lsp.diagnostic.goto_next()<CR>
-
-            imap <silent><expr> <c-Space> compe#complete()
-            inoremap <silent><expr> <Tab>      compe#confirm('<Tab>')
-            inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-            ]]
-        end
+local on_attach = function(server)
+    print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
+end
 
 local servers = {'tsserver', 'pyls', 'gopls', 'vuels', 'svelte'}
 
 for _, server in ipairs(servers) do
     lspconfig[server].setup{
         on_attach=function(client, buf)
-            on_attach(server, client, buf)
+            on_attach(server)
         end,
         capabilities = capabilities,
     }
@@ -70,15 +55,11 @@ end
 
 require("flutter-tools").setup {
   flutter_outline = {
-    highlight = "NonText",
-    enabled = true,
-  },
-  outline = {
-    open_cmd = "30vnew",
+    enabled = true
   },
   lsp = {
     on_attach = function(client,buf)
-        on_attach('dartls', client, buf)
+        on_attach('dartls')
     end,
     capabilities = capabilities
   }
@@ -107,4 +88,3 @@ function goimports(timeoutms)
 end
 
 vim.cmd[[autocmd BufWritePre *.go lua goimports(1000)]]
-
