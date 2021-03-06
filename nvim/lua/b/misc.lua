@@ -39,3 +39,6 @@ require('gitsigns').setup({
 })
 
 vim.cmd('highlight NvimTreeFolderName guifg=#acb3b5')
+
+vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. "/snippets"
+
