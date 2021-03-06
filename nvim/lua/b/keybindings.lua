@@ -63,3 +63,10 @@ nnoremap {"<leader>f", ":lua vim.lsp.buf.formatting()<CR>"}
 nnoremap {"<leader>s", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>"}
 nnoremap {"d[", ":lua vim.lsp.diagnostic.goto_prev()<CR>"}
 nnoremap {"d]", ":lua vim.lsp.diagnostic.goto_next()<CR>"}
+
+vim.cmd[[
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <Tab>      compe#confirm('<Tab>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+]]
+
