@@ -19,9 +19,10 @@ paq 'ulwlu/elly.vim'
 paq 'nvim-treesitter/nvim-treesitter'
 paq 'neovim/nvim-lspconfig'
 paq 'hrsh7th/nvim-compe'
+paq 'glepnir/lspsaga.nvim'
 paq 'hrsh7th/vim-vsnip'
 paq 'hrsh7th/vim-vsnip-integ'
-paq 'glepnir/lspsaga.nvim'
+
 
 paq 'akinsho/flutter-tools.nvim'
 paq 'akinsho/nvim-toggleterm.lua'
@@ -34,3 +35,6 @@ paq 'lewis6991/gitsigns.nvim'
 
 paq 'kyazdani42/nvim-tree.lua'
 paq 'kyazdani42/nvim-web-devicons'
+paq 'ayu-theme/ayu-vim'
+
+paq 'sbdchd/neoformat' -- prettier

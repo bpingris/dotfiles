@@ -42,7 +42,7 @@ local on_attach = function(server)
     print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
 end
 
-local servers = {'tsserver', 'pyls', 'gopls', 'vuels', 'svelte'}
+local servers = {'tsserver', 'pyright', 'gopls', 'vuels', 'svelte'}
 
 for _, server in ipairs(servers) do
     lspconfig[server].setup{
@@ -54,9 +54,9 @@ for _, server in ipairs(servers) do
 end
 
 require("flutter-tools").setup {
-    flutter_outline = {
+    closing_tags = {
         highlight = "NonText",
-        enabled = true
+        enabled = false
     },
     lsp = {
         on_attach = function(client,buf)

@@ -36,4 +36,7 @@ apply_options{
     mouse="a"
 }
 
-vim.cmd("colorscheme elly")
+vim.cmd[[  
+let ayucolor="dark"
+colorscheme ayu
+]]
