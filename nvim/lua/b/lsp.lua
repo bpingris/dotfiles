@@ -42,7 +42,7 @@ local on_attach = function(server)
     print("'" .. server .. "' started") -- so I'm "sure" my LS has started!
 end
 
-local servers = {'tsserver', 'pyright', 'gopls', 'vuels', 'svelte'}
+local servers = {'tsserver', 'pyright', 'gopls', 'vuels', 'svelte', 'ccls'}
 
 for _, server in ipairs(servers) do
     lspconfig[server].setup{

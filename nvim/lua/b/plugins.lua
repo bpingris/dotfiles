@@ -1,10 +1,11 @@
+--[[ 
 vim.cmd 'packadd paq-nvim'         -- Load package
 
 local Paq = require('paq-nvim')
 local paq = Paq.paq
 paq {'savq/paq-nvim', opt=true}     -- Let Paq manage itself
 
-paq {'junegunn/fzf', run=function() vim.cmd(":call fzf#install()") end}
+ paq {'junegunn/fzf', run=function() vim.cmd(":call fzf#install()") end}
 paq 'junegunn/fzf.vim'
 
 paq 'nvim-lua/plenary.nvim'
@@ -38,3 +39,4 @@ paq 'kyazdani42/nvim-web-devicons'
 paq 'ayu-theme/ayu-vim'
 
 paq 'sbdchd/neoformat' -- prettier
+]]
