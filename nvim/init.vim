@@ -11,8 +11,6 @@ Plug 'b3nj5m1n/kommentary'
 
 Plug 'tpope/vim-surround'
 
-Plug 'ulwlu/elly.vim'
-
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'

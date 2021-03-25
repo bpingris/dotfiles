@@ -53,10 +53,6 @@ for _, server in ipairs(servers) do
     }
 end
 
-lspconfig.scry.setup{
-    cmd={"/home/benoitp/work/scry/bin/scry"}
-}
-
 require("flutter-tools").setup {
     closing_tags = {
         highlight = "NonText",
