@@ -21,8 +21,6 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'akinsho/nvim-toggleterm.lua'
 
-Plug 'bagrat/vim-buffet'
-
 Plug 'windwp/nvim-autopairs'
 
 Plug 'lewis6991/gitsigns.nvim'
@@ -32,6 +30,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ayu-theme/ayu-vim'
 
 Plug 'sbdchd/neoformat'
+
+Plug 'akinsho/nvim-bufferline.lua'
 
 call plug#end()
 

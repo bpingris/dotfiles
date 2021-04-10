@@ -66,8 +66,6 @@ require("flutter-tools").setup {
     }
 }
 
-
-
 function goimports(timeoutms)
     local context = { source = { organizeImports = true } }
     vim.validate { context = { context, "t", true } }

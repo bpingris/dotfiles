@@ -42,8 +42,8 @@ nnoremap {"<leader>p", ":call FZFOpen(':GitFiles')<CR>"}
 
 nnoremap {"<C-b>", ":NvimTreeToggle<CR>"}
 
-nmap {"J", ":bp<CR>"}
-nmap {"K", ":bn<CR>"}
+nmap {"J", ":BufferLineCyclePrev<CR>"}
+nmap {"K", ":BufferLineCycleNext<CR>"}
 nmap {"<C-e>", ":bd<CR>"}
 nmap {"<leader>/", ":noh<CR>"}
 

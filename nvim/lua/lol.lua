@@ -1,4 +1,4 @@
-require 'b.buffet'
+require 'b.bufferline'
 require 'b.keybindings'
 require 'b.options'
 require 'b.lsp'
