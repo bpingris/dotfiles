@@ -15,16 +15,4 @@ function M.create_augroups(definitions)
 	end
 end
 
-function M.apply_options(opts)
-  for k, v in pairs(opts) do
-    if v == true then
-      vim.cmd("set " .. k)
-    elseif v == false then
-      vim.cmd(string.format("set no%s", k))
-    else
-      vim.cmd(string.format("set %s=%s", k, v))
-    end
-  end
-end
-
 return M

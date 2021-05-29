@@ -1,41 +1,41 @@
-local apply_options = require'b.utils'.apply_options
 local create_augroups = require'b.utils'.create_augroups
+local opt = vim.opt
 
-apply_options{
-	relativenumber=true,
-	number=true,
-	scrolloff=4,
-	exrc=true,
-	completeopt="menuone,noinsert,noselect",
-	hidden=true,
-	updatetime=50,
-	tabstop=4,
-	softtabstop=4,
-	shiftwidth=4,
-	expandtab=true,
-	wrap=false,
-	smartcase=true,
-	incsearch=false,
-	hlsearch=false,
-	swapfile=false,
-	backup=false,
-	undodir="~/.vim/undodir",
-	undofile=true,
-	shortmess="filnxtToOFc",
-	mouse="a",
-    lazyredraw=true,
-    termguicolors=true
-}
+opt.relativenumber=true
+opt.number=true
+opt.scrolloff=4
+opt.completeopt="menuone,noinsert,noselect"
+opt.hidden=true
+opt.updatetime=50
+opt.tabstop=4
+opt.softtabstop=4
+opt.shiftwidth=4
+opt.expandtab=true
+opt.wrap=false
+opt.smartcase=true
+opt.incsearch=false
+opt.hlsearch=false
+opt.swapfile=false
+opt.backup=false
+opt.undodir="~/.vim/undodir"
+opt.undofile=true
+opt.shortmess="filnxtToOFc"
+opt.mouse="a"
+opt.lazyredraw=true
+opt.termguicolors=true
 
 create_augroups{
     hightlight_yank = {
         "TextYankPost * silent! lua vim.highlight.on_yank{ timeout=300 }"
+    },
+    FiletypeIndentation = {
+        "BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact"
     }
 }
 
 vim.cmd [[
 syntax enable
-colorscheme one-nvim
+colorscheme tokyonight
 
 set statusline=
 set statusline+=%#PmenuSel#

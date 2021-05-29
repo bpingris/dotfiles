@@ -24,7 +24,8 @@ nnoremap {"<leader>/", ":noh<CR>"}
 nnoremap {"J", ":BufPrev<CR>"}
 nnoremap {"K", ":BufNext<CR>"}
 
-nnoremap {"<C-p>", ":Telescope find_files<CR>"}
+nnoremap {"<C-p>", ":Telescope find_files theme=get_dropdown previewer=false<CR>"}
+nnoremap {"<M-f>", ":Telescope live_grep theme=get_dropdown<CR>"}
 
 tnoremap {"jk", "<C-\\><C-n>"}
 
@@ -32,3 +33,21 @@ tmap {"<C-w>h", "jk<C-w>h"}
 tmap {"<C-w>j", "jk<C-w>j"}
 tmap {"<C-w>k", "jk<C-w>k"}
 tmap {"<C-w>l", "jk<C-w>l"}
+
+nnoremap {"<C-q>", ":ToggleQuickFix<CR>"}
+nnoremap {"<leader>f", ":Format<CR>"}
+
+vim.cmd [[
+function! ToggleQuickFix()
+    if getqflist({'winid' : 0}).winid
+        cclose
+    else
+        copen
+    endif
+endfunction
+
+command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
+]]
+
+nnoremap {"<leader>q", ":ToggleQuickFix<CR>"}
+nnoremap {"<M-f>", ":Telescope live_grep theme=get_dropdown<CR>"}
