@@ -45,6 +45,15 @@ formatterConfig["dart"] = {
     end
 }
 
+formatterConfig["go"] = {
+    function()
+        return {
+            exe = "goimports",
+            stdin = true
+        }
+    end
+}
+
 require("formatter").setup({
     logging = false,
     filetype = formatterConfig
