@@ -23,6 +23,7 @@ opt.shortmess="filnxtToOFc"
 opt.mouse="a"
 opt.lazyredraw=true
 opt.termguicolors=true
+opt.signcolumn="yes"
 
 create_augroups{
     hightlight_yank = {
