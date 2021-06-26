@@ -13,11 +13,10 @@ opt.shiftwidth=4
 opt.expandtab=true
 opt.wrap=false
 opt.smartcase=true
-opt.incsearch=false
-opt.hlsearch=false
+opt.incsearch=true
+opt.hlsearch=true
 opt.swapfile=false
 opt.backup=false
-opt.undodir="~/.vim/undodir"
 opt.undofile=true
 opt.shortmess="filnxtToOFc"
 opt.mouse="a"
@@ -28,13 +27,11 @@ opt.signcolumn="yes"
 create_augroups{
     hightlight_yank = {
         "TextYankPost * silent! lua vim.highlight.on_yank{ timeout=300 }"
-    },
-    FiletypeIndentation = {
-        "BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact"
     }
 }
 
 vim.cmd [[
+set undodir=~/.vim/undodir
 syntax enable
 colorscheme tokyonight
 

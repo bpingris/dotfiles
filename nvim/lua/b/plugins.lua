@@ -26,6 +26,7 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
 
     "neovim/nvim-lspconfig",
     "hrsh7th/nvim-compe",
+    "kabouzeid/nvim-lspinstall",
 
     -- tpope a beast
     "tpope/vim-fugitive",
@@ -40,11 +41,11 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
 
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
+    -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
     {"nvim-telescope/telescope-fzf-native.nvim", ["do"] = ":make"},
     "folke/tokyonight.nvim",
     "mhartington/formatter.nvim",
-    "peitalin/vim-jsx-typescript",
 
     -- akinsho's a beast too
     "akinsho/flutter-tools.nvim"

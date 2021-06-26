@@ -50,4 +50,3 @@ command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
 ]]
 
 nnoremap {"<leader>q", ":ToggleQuickFix<CR>"}
-nnoremap {"<M-f>", ":Telescope live_grep theme=get_dropdown<CR>"}

@@ -6,7 +6,9 @@ require"telescope".setup{
             i = {
                 ["<Esc>"] = actions.close
             }
-        }
+        },
+        file_ignore_patterns = { "%.jpg", "%.jpeg", "%.png", "%.otf", "%.ttf" },
+        winblend = 7,
     },
     extensions = {
         fzf = {
