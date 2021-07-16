@@ -1,5 +1,6 @@
-local vim = vim
-local function plug(path, config) 
+local vim=vim
+
+local function plug(path, config)
     vim.validate {
         path = {path, 's'},
         config = {config, vim.tbl_islist, 'an array of packages'},
@@ -21,32 +22,23 @@ local function plug(path, config)
 end
 
 plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
-    {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
-    "tjdevries/astronauta.nvim",
-
-    "neovim/nvim-lspconfig",
-    "hrsh7th/nvim-compe",
-    "kabouzeid/nvim-lspinstall",
-
-    -- tpope a beast
-    "tpope/vim-fugitive",
-    "tpope/vim-surround",
-    "tpope/vim-commentary",
-
-    "mhartington/oceanic-next",
     "Th3Whit3Wolf/one-nvim",
-
-    "jiangmiao/auto-pairs",
-    "jose-elias-alvarez/buftabline.nvim",
-
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
-    -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
     {"nvim-telescope/telescope-fzf-native.nvim", ["do"] = ":make"},
-    "folke/tokyonight.nvim",
-    "mhartington/formatter.nvim",
+    {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
 
-    -- akinsho's a beast too
-    "akinsho/flutter-tools.nvim"
+    "hrsh7th/nvim-compe",
+    "hrsh7th/vim-vsnip",
+
+    "neovim/nvim-lspconfig",
+    "kabouzeid/nvim-lspinstall",
+
+    "windwp/nvim-autopairs",
+
+    "tpope/vim-commentary",
+    "tpope/vim-eunuch",
+    "tpope/vim-fugitive",
+    "tpope/vim-surround",
 })

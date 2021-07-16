@@ -1,6 +1,6 @@
 local actions = require'telescope.actions'
 
-require"telescope".setup{
+require'telescope'.setup{
     defaults = {
         mappings = {
             i = {
@@ -8,7 +8,6 @@ require"telescope".setup{
             }
         },
         file_ignore_patterns = { "%.jpg", "%.jpeg", "%.png", "%.otf", "%.ttf" },
-        winblend = 7,
     },
     extensions = {
         fzf = {
@@ -16,7 +15,5 @@ require"telescope".setup{
             override_file_sorter = true,     -- override the file sorter
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
         }
-    }
+    } 
 }
-
-require"telescope".load_extension("fzf")
