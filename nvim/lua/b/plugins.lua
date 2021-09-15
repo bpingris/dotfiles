@@ -22,7 +22,7 @@ local function plug(path, config)
 end
 
 plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
-    "Th3Whit3Wolf/one-nvim",
+    "ChristianChiarulli/nvcode-color-schemes.vim",
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
     "nvim-telescope/telescope.nvim",
@@ -31,6 +31,7 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
 
     "hrsh7th/nvim-compe",
     "hrsh7th/vim-vsnip",
+
 
     "neovim/nvim-lspconfig",
     "kabouzeid/nvim-lspinstall",
@@ -41,4 +42,8 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     "tpope/vim-eunuch",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
+    "mhartington/formatter.nvim",
+
+    "kyazdani42/nvim-web-devicons",
+    "romgrk/barbar.nvim",
 })

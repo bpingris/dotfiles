@@ -30,5 +30,15 @@ set shortmess+=c
 syntax on
 filetype plugin on
 
-colorscheme one-nvim
+
+colorscheme onedark
+
+highlight Normal guibg=NONE ctermbg=NONE
 ]]
+
+vim.api.nvim_exec([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.go,*.c,*.h FormatWrite
+augroup END
+]], true)

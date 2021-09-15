@@ -1,20 +1,22 @@
 local map = vim.api.nvim_set_keymap
 
-map("i", "jk", "<Esc>", {silent=true})
+local nor = {noremap=true, silent=true}
 
-map("i", "<C-s>", "<Esc>:w<CR>", {silent=true, noremap=true})
-map("n", "<C-s>", ":w<CR>", {silent=true, noremap=true})
+map("i", "jk", "<Esc>", nor)
 
-map("v", "<", "<gv", {silent=true, noremap=true})
-map("v", ">", ">gv", {silent=true, noremap=true})
+map("i", "<C-s>", "<Esc>:w<CR>", nor)
+map("n", "<C-s>", ":w<CR>", nor)
 
-map("n", "<C-p>", ":Telescope find_files<CR>", {silent=true, noremap=true})
-map("n", "<A-f>", ":Telescope live_grep<CR>", {silent=true, noremap=true})
-map("n", "<leader>b", ":Telescope buffers<CR>", {silent=true, noremap=true})
+map("v", "<", "<gv", nor)
+map("v", ">", ">gv", nor)
 
-map("n", "<leader>/", ":noh<CR>", {silent=true, noremap=true})
+map("n", "<C-p>", ":Telescope find_files<CR>", nor)
+map("n", "<A-f>", ":Telescope live_grep<CR>", nor)
+map("n", "<leader>b", ":Telescope buffers<CR>", nor)
 
-map("v", "<leader>y", '"+y',{silent=true, noremap=true})
+map("n", "<leader>/", ":noh<CR>", nor)
+
+map("v", "<leader>y", '"+y',nor)
 
 
 vim.cmd [[
@@ -29,4 +31,7 @@ endfunction
 command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
 ]]
 
-map("n", "<leader>q", ":ToggleQuickFix<CR>", {silent=true, noremap=true})
+map("n", "<leader>q", ":ToggleQuickFix<CR>", nor)
+
+map("n", "K", ":BufferPrevious<CR>", nor)
+map("n", "J", ":BufferNext<CR>", nor)
