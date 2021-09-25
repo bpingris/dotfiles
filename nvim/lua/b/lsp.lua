@@ -29,6 +29,33 @@ local on_attach = function(client, bufnr)
     map("i", "<C-d>", "compe#scroll({'delta': -4 })", {noremap=true,silent=true,expr=true})
 end
 
+if false then
+
+local cmp = require'cmp'
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
+    completion = {
+        completeopt = "menu,menuone,noselect",
+    },
+    mapping = {
+      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+        { name = "path" },
+        { name = "buffer" },
+        { name = "calc" },
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "vsnip" },
+    }
+})
+
+end
+
 -- NVIM COMPE
 require'compe'.setup {
     enabled = true;
@@ -51,7 +78,6 @@ require'compe'.setup {
         max_height = math.floor(vim.o.lines * 0.3),
         min_height = 1,
     };
-
     source = {
         path = true;
         buffer = true;
@@ -75,6 +101,8 @@ local function setup_servers()
             'additionalTextEdits',
         }
     }
+    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
     for _, server in pairs(servers) do
         require"lspconfig"[server].setup{
             on_attach = function(client, bufnr) print("'"..server.."' launched"); on_attach(client, bufnr) end,

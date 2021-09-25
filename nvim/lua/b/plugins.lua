@@ -30,7 +30,10 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
 
     "hrsh7th/nvim-compe",
+    -- "hrsh7th/nvim-cmp",
     "hrsh7th/vim-vsnip",
+    -- "hrsh7th/cmp-buffer",
+    -- "hrsh7th/cmp-nvim-lsp",
 
 
     "neovim/nvim-lspconfig",
@@ -45,5 +48,6 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     "mhartington/formatter.nvim",
 
     "kyazdani42/nvim-web-devicons",
-    "romgrk/barbar.nvim",
+    "akinsho/bufferline.nvim",
+    "projekt0n/github-nvim-theme",
 })

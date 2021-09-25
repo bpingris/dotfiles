@@ -30,9 +30,6 @@ set shortmess+=c
 syntax on
 filetype plugin on
 
-
-colorscheme onedark
-
 highlight Normal guibg=NONE ctermbg=NONE
 ]]
 

@@ -33,5 +33,5 @@ command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
 
 map("n", "<leader>q", ":ToggleQuickFix<CR>", nor)
 
-map("n", "K", ":BufferPrevious<CR>", nor)
-map("n", "J", ":BufferNext<CR>", nor)
+map("n", "J", ":BufferLineCyclePrev<CR>", nor)
+map("n", "K", ":BufferLineCycleNext<CR>", nor)
