@@ -2,16 +2,12 @@
 
 This repository contains useful informations about my setup.
 
-- zsh with oh-my-zsh and powerlevel10k
-- neovim 0.5 (nightly)
+- fish (with fisher)
+- neovim 0.5
+- bspwm
 
+![](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/desktop_example.png)
 
-### neovim
-
-![neovim](https://i.imgur.com/OcdUiRw.png)
-
-
-### i3
 
 #### Disable power button
 
