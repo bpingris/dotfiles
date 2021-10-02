@@ -6,7 +6,7 @@ This repository contains useful informations about my setup.
 - neovim 0.5
 - bspwm
 
-![](https://raw.githubusercontent.com/BenoitPingris/dotfiles/master/images/desktop_example.png)
+![](https://raw.githubusercontent.com/bpingris/dotfiles/master/images/desktop_example.png)
 
 
 #### Disable power button
