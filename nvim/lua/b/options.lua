@@ -29,8 +29,6 @@ vim.cmd[[
 set shortmess+=c
 syntax on
 filetype plugin on
-
-highlight Normal guibg=NONE ctermbg=NONE
 ]]
 
 vim.api.nvim_exec([[
