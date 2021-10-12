@@ -1,8 +1,25 @@
-local nvim_lsp = require"lspconfig"
-local protocol = require"vim.lsp.protocol"
+local cmp = require'cmp'
 
+cmp.setup{
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
+        mapping = {
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.close(),
+            ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        },
+        sources = {
+            { name = "nvim_lsp" },
+            { name = "vsnip" },
+            { name = "buffer" },
+        }
+}
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr, server)
+    print("'"..server.."' launched")
     local opts = { noremap = true, silent = true }
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -21,92 +38,15 @@ local on_attach = function(client, bufnr)
     map("n", "<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     map("n", "d[", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     map("n", "d]", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-
-    map("i", "<C-Space>", "compe#complete()", {noremap=true,silent=true,expr=true})
-    map("i", "<Tab>", "compe#confirm('<Tab>')", {noremap=true,silent=true,expr=true})
-    map("i", "<C-e>", "compe#close('<C-e>')", {noremap=true,silent=true,expr=true})
-    map("i", "<C-f>", "compe#scroll({'delta': +4 })", {noremap=true,silent=true,expr=true})
-    map("i", "<C-d>", "compe#scroll({'delta': -4 })", {noremap=true,silent=true,expr=true})
 end
 
-if false then
-
-local cmp = require'cmp'
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
-    },
-    completion = {
-        completeopt = "menu,menuone,noselect",
-    },
-    mapping = {
-      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
-        { name = "path" },
-        { name = "buffer" },
-        { name = "calc" },
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "vsnip" },
-    }
-})
-
-end
-
--- NVIM COMPE
-require'compe'.setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'enable';
-    throttle_time = 80;
-    source_timeout = 200;
-    resolve_timeout = 800;
-    incomplete_delay = 400;
-    max_abbr_width = 100;
-    max_kind_width = 100;
-    max_menu_width = 100;
-    documentation = {
-        border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-        winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-        max_width = 120,
-        min_width = 60,
-        max_height = math.floor(vim.o.lines * 0.3),
-        min_height = 1,
-    };
-    source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        vsnip = true;
-    };
-}
-
--- LSPINSTALL
 local function setup_servers()
     require"lspinstall".setup()
     local servers = require'lspinstall'.installed_servers()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {
-            'documentation',
-            'detail',
-            'additionalTextEdits',
-        }
-    }
-    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
     for _, server in pairs(servers) do
         require"lspconfig"[server].setup{
-            on_attach = function(client, bufnr) print("'"..server.."' launched"); on_attach(client, bufnr) end,
-            capabilities = capabilities,
+            on_attach = function(client, bufnr) on_attach(client, bufnr, server) end,
+            capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
         }
     end
 end

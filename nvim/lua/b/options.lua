@@ -10,7 +10,8 @@ opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
 
-opt.completeopt = "menuone,noinsert,noselect"
+opt.completeopt = "menu,menuone,noselect"
+opt.swapfile = false
 
 opt.undofile = true
 
@@ -37,3 +38,9 @@ augroup FormatAutogroup
   autocmd BufWritePost *.go,*.c,*.h FormatWrite
 augroup END
 ]], true)
+
+vim.cmd[[
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+]]

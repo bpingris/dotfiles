@@ -29,11 +29,12 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     {"nvim-telescope/telescope-fzf-native.nvim", ["do"] = ":make"},
     {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
 
-    "hrsh7th/nvim-compe",
-    -- "hrsh7th/nvim-cmp",
+    -- "hrsh7th/nvim-compe",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-vsnip",
     "hrsh7th/vim-vsnip",
-    -- "hrsh7th/cmp-buffer",
-    -- "hrsh7th/cmp-nvim-lsp",
 
 
     "neovim/nvim-lspconfig",
@@ -50,4 +51,6 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     "kyazdani42/nvim-web-devicons",
     "akinsho/bufferline.nvim",
     "projekt0n/github-nvim-theme",
+
+    "famiu/feline.nvim"
 })

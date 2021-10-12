@@ -18,6 +18,8 @@ map("n", "<leader>/", ":noh<CR>", nor)
 
 map("v", "<leader>y", '"+y',nor)
 
+map("n", "<C-b>", ":Lexplore<CR>", nor)
+
 
 vim.cmd [[
 function! ToggleQuickFix()
