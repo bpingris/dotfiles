@@ -52,5 +52,6 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     "akinsho/bufferline.nvim",
     "projekt0n/github-nvim-theme",
 
-    "famiu/feline.nvim"
+    "famiu/feline.nvim",
+    "kyazdani42/nvim-tree.lua"
 })

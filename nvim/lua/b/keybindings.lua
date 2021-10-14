@@ -18,7 +18,9 @@ map("n", "<leader>/", ":noh<CR>", nor)
 
 map("v", "<leader>y", '"+y',nor)
 
-map("n", "<C-b>", ":Lexplore<CR>", nor)
+map("n", "<C-b>", ":NvimTreeToggle<CR>", nor)
+
+map("n", "<leader>f", ":Format<CR>", nor)
 
 
 vim.cmd [[

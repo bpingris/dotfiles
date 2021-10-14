@@ -32,12 +32,21 @@ syntax on
 filetype plugin on
 ]]
 
-vim.api.nvim_exec([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.go,*.c,*.h FormatWrite
-augroup END
-]], true)
+-- vim.api.nvim_exec([[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.go,*.c,*.h FormatWrite
+-- augroup END
+-- ]], true)
+--
+vim.cmd[[
+function _Gci()
+    execute 'silent !gci -local cocoon -w %'
+    e
+endfunction
+
+command Gci :call _Gci()
+]]
 
 vim.cmd[[
 let g:netrw_liststyle = 3

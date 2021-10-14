@@ -43,7 +43,6 @@ require('formatter').setup({
         end
     },
     c = {
-        -- clang-format
        function()
           return {
             exe = "clang-format",
@@ -54,14 +53,11 @@ require('formatter').setup({
         end
     },
     go = {
-        -- clang-format
         function()
             return {exe = "goimports", stdin = true}
         end
-
     },
     python = {
-        -- clang-format
        function()
            return {exe = "black", args = {"-"}, stdin = true}
         end
