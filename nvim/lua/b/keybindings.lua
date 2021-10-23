@@ -11,7 +11,7 @@ map("v", "<", "<gv", nor)
 map("v", ">", ">gv", nor)
 
 map("n", "<C-p>", ":Telescope find_files<CR>", nor)
-map("n", "<A-f>", ":Telescope live_grep<CR>", nor)
+map("n", "<leader>s", ":Telescope live_grep<CR>", nor)
 map("n", "<leader>b", ":Telescope buffers<CR>", nor)
 
 map("n", "<leader>/", ":noh<CR>", nor)
@@ -20,7 +20,8 @@ map("v", "<leader>y", '"+y',nor)
 
 map("n", "<C-b>", ":NvimTreeToggle<CR>", nor)
 
-map("n", "<leader>f", ":Format<CR>", nor)
+map("n", "<leader>fd", ":Telescope lsp_document_diagnostics<CR>", nor)
+map("n", "<leader>fr", ":Telescope lsp_references<CR>", nor)
 
 
 vim.cmd [[

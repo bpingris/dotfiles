@@ -22,23 +22,22 @@ local function plug(path, config)
 end
 
 plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
-    "ChristianChiarulli/nvcode-color-schemes.vim",
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
     "nvim-telescope/telescope.nvim",
     {"nvim-telescope/telescope-fzf-native.nvim", ["do"] = ":make"},
     {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
 
-    -- "hrsh7th/nvim-compe",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-vsnip",
     "hrsh7th/vim-vsnip",
+    "hrsh7th/cmp-path",
 
 
     "neovim/nvim-lspconfig",
-    "kabouzeid/nvim-lspinstall",
+    "williamboman/nvim-lsp-installer",
 
     "windwp/nvim-autopairs",
 
@@ -46,12 +45,12 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
     "tpope/vim-eunuch",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
-    "mhartington/formatter.nvim",
 
     "kyazdani42/nvim-web-devicons",
     "akinsho/bufferline.nvim",
     "projekt0n/github-nvim-theme",
 
-    "famiu/feline.nvim",
-    "kyazdani42/nvim-tree.lua"
+    "nvim-lualine/lualine.nvim",
+    "kyazdani42/nvim-tree.lua",
+    "akinsho/flutter-tools.nvim"
 })

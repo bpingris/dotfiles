@@ -1,4 +1,5 @@
 local cmp = require'cmp'
+local au = require'b.au'
 
 cmp.setup{
     snippet = {
@@ -6,20 +7,35 @@ cmp.setup{
             vim.fn["vsnip#anonymous"](args.body)
         end,
     },
-        mapping = {
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.close(),
-            ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-        },
-        sources = {
-            { name = "nvim_lsp" },
-            { name = "vsnip" },
-            { name = "buffer" },
-        }
+    mapping = {
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+    },
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "vsnip" },
+        { name = "buffer", keyword_length = 3 },
+        { name = "path" },
+    },
 }
 
-local on_attach = function(client, bufnr, server)
-    print("'"..server.."' launched")
+local setup_aucmd = function(client)
+    if client and client.resolved_capabilities.document_formatting then
+        -- format on save
+        au.BufWritePre = function()
+            -- BUG: folds are are removed when formatting is done, so we save the current state of the
+            -- view and re-apply it manually after formatting the buffer
+            -- @see: https://github.com/nvim-treesitter/nvim-treesitter/issues/1424#issuecomment-909181939
+            vim.cmd 'mkview!'
+            vim.lsp.buf.formatting_sync()
+            vim.cmd 'loadview'
+        end
+    end
+end
+
+local on_attach = function(client, bufnr)
+    setup_aucmd(client)
     local opts = { noremap = true, silent = true }
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -40,21 +56,48 @@ local on_attach = function(client, bufnr, server)
     map("n", "d]", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 
-local function setup_servers()
-    require"lspinstall".setup()
-    local servers = require'lspinstall'.installed_servers()
-    for _, server in pairs(servers) do
-        require"lspconfig"[server].setup{
-            on_attach = function(client, bufnr) on_attach(client, bufnr, server) end,
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+        server:setup(opts)
+        vim.cmd [[ do User LspAttachBuffers ]]
+    end)
+
+
+    local lsp_installer = require("nvim-lsp-installer")
+
+    lsp_installer.on_server_ready(function(server)
+        local opts = {
+            on_attach = on_attach,
             capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
         }
-    end
-end
+        server:setup(opts)
+        vim.cmd [[ do User LspAttachBuffers ]]
+    end)
 
-setup_servers()
+    require('flutter-tools').setup{
+        lsp = {
+            on_attach = on_attach,
+            settings = {
+                showTodos = false,
+                completeFunctionCalls = true,
+                analysisExcludeFolders = {
+                    vim.fn.expand '$HOME/.pub-cache',
+                    vim.fn.expand("$HOME/flutter/packages"),
+                    vim.fn.expand("$HOME/flutter/bin/cache"),
+                    vim.fn.expand("$HOME/flutter/.pub-cache"),
+                    vim.fn.expand("$HOME/flutter"),
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+                },
+                lineLength = 120
+            }
+        }
+    }
