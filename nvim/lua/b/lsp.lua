@@ -56,41 +56,34 @@ local on_attach = function(client, bufnr)
     map("n", "d]", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 
+
+
 local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.on_server_ready(function(server)
-    local opts = {}
-        server:setup(opts)
-        vim.cmd [[ do User LspAttachBuffers ]]
-    end)
+    local opts = {
+        on_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
+require('flutter-tools').setup{
+    lsp = {
+        on_attach = on_attach,
+        settings = {
+            showTodos = false,
+            completeFunctionCalls = true,
+            analysisExcludedFolders = {
+                vim.fn.expand '$HOME/.pub-cache',
+                vim.fn.expand("$HOME/flutter/packages"),
+                vim.fn.expand("$HOME/flutter/bin/cache"),
+                vim.fn.expand("$HOME/flutter/.pub-cache"),
+                vim.fn.expand("$HOME/flutter"),
 
-    local lsp_installer = require("nvim-lsp-installer")
-
-    lsp_installer.on_server_ready(function(server)
-        local opts = {
-            on_attach = on_attach,
-            capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        }
-        server:setup(opts)
-        vim.cmd [[ do User LspAttachBuffers ]]
-    end)
-
-    require('flutter-tools').setup{
-        lsp = {
-            on_attach = on_attach,
-            settings = {
-                showTodos = false,
-                completeFunctionCalls = true,
-                analysisExcludeFolders = {
-                    vim.fn.expand '$HOME/.pub-cache',
-                    vim.fn.expand("$HOME/flutter/packages"),
-                    vim.fn.expand("$HOME/flutter/bin/cache"),
-                    vim.fn.expand("$HOME/flutter/.pub-cache"),
-                    vim.fn.expand("$HOME/flutter"),
-
-                },
-                lineLength = 120
-            }
+            },
+            lineLength = 120
         }
     }
+}
