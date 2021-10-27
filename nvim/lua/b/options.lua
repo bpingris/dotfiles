@@ -25,12 +25,13 @@ opt.pumheight = 10
 
 opt.termguicolors = true
 opt.wrap = false
-
  
 
 vim.cmd[[
 set shortmess+=c
 syntax on
+]]
+vim.cmd[[
 filetype plugin on
 ]]
 

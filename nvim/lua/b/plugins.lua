@@ -52,5 +52,7 @@ plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
 
     "nvim-lualine/lualine.nvim",
     "kyazdani42/nvim-tree.lua",
-    "akinsho/flutter-tools.nvim"
+    "akinsho/flutter-tools.nvim",
+
+    "editorconfig/editorconfig-vim",
 })

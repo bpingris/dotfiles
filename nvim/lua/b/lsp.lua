@@ -65,6 +65,31 @@ lsp_installer.on_server_ready(function(server)
         on_attach = on_attach,
         capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
     }
+
+    if server.name == "diagnosticls" then
+        opts = {
+            on_attach = on_attach,
+            capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            filetypes = {
+                'css', 'javascript', 'javascriptreact', 'json', 'less',
+                'scss', 'typescript', 'typescriptreact', 'vue'
+            },
+            init_options = {
+                formatters = {
+                    prettier = {
+                        command = 'prettier',
+                        args = {'--stdin-filepath', '%filename', '--config', '.prettierrc'},
+                        rootPatterns = {'.git', '.prettierrc'},
+                    },
+                },
+                formatFiletypes = {
+                    vue = 'prettier',
+                    typescript = 'prettier',
+                }
+            }
+        }
+    end
+
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
@@ -87,3 +112,5 @@ require('flutter-tools').setup{
         }
     }
 }
+
+-- require('headwind').setup{}
