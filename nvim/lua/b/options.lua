@@ -1,3 +1,4 @@
+local au = require("b.au")
 local opt = vim.opt
 
 vim.g.mapleader = " "
@@ -25,13 +26,12 @@ opt.pumheight = 10
 
 opt.termguicolors = true
 opt.wrap = false
- 
 
-vim.cmd[[
+vim.cmd [[
 set shortmess+=c
 syntax on
 ]]
-vim.cmd[[
+vim.cmd [[
 filetype plugin on
 ]]
 
@@ -42,17 +42,27 @@ filetype plugin on
 -- augroup END
 -- ]], true)
 --
-vim.cmd[[
+vim.cmd [[
 function _Gci()
     execute 'silent !gci -local cocoon -w %'
     e
 endfunction
 
 command Gci :call _Gci()
+
+command Bd :bp|bd #
 ]]
 
-vim.cmd[[
+vim.cmd [[
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
+]]
+
+au.TextYankPost = function()
+    vim.highlight.on_yank({higroup = "Visual", timeout = 120})
+end
+
+vim.cmd [[
+let g:go_list_type="quickfix"
 ]]

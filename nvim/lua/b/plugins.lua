@@ -1,9 +1,9 @@
-local vim=vim
+local vim = vim
 
 local function plug(path, config)
     vim.validate {
-        path = {path, 's'},
-        config = {config, vim.tbl_islist, 'an array of packages'},
+        path = {path, "s"},
+        config = {config, vim.tbl_islist, "an array of packages"}
     }
     vim.fn["plug#begin"](path)
 
@@ -21,38 +21,35 @@ local function plug(path, config)
     vim.fn["plug#end"]()
 end
 
-plug(tostring(os.getenv("HOME")) .. "/.vim/plugged", {
-    "nvim-lua/plenary.nvim",
-    "nvim-lua/popup.nvim",
-    "nvim-telescope/telescope.nvim",
-    {"nvim-telescope/telescope-fzf-native.nvim", ["do"] = ":make"},
-    {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
-
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-vsnip",
-    "hrsh7th/vim-vsnip",
-    "hrsh7th/cmp-path",
-
-
-    "neovim/nvim-lspconfig",
-    "williamboman/nvim-lsp-installer",
-
-    "windwp/nvim-autopairs",
-
-    "tpope/vim-commentary",
-    "tpope/vim-eunuch",
-    "tpope/vim-fugitive",
-    "tpope/vim-surround",
-
-    "kyazdani42/nvim-web-devicons",
-    "akinsho/bufferline.nvim",
-    "projekt0n/github-nvim-theme",
-
-    "nvim-lualine/lualine.nvim",
-    "kyazdani42/nvim-tree.lua",
-    "akinsho/flutter-tools.nvim",
-
-    "editorconfig/editorconfig-vim",
-})
+plug(
+    tostring(os.getenv("HOME")) .. "/.vim/plugged",
+    {
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim",
+        {"nvim-telescope/telescope-fzf-native.nvim", ["do"] = ":make"},
+        {"nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate"},
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-vsnip",
+        "hrsh7th/vim-vsnip",
+        "hrsh7th/cmp-path",
+        "neovim/nvim-lspconfig",
+        "williamboman/nvim-lsp-installer",
+        "windwp/nvim-autopairs",
+        "tpope/vim-commentary",
+        "tpope/vim-eunuch",
+        "tpope/vim-fugitive",
+        "tpope/vim-surround",
+        "kyazdani42/nvim-web-devicons",
+        "akinsho/bufferline.nvim",
+        "projekt0n/github-nvim-theme",
+        "nvim-lualine/lualine.nvim",
+        "kyazdani42/nvim-tree.lua",
+        "akinsho/flutter-tools.nvim",
+        "editorconfig/editorconfig-vim",
+        -- "github/copilot.vim", fun but not *that* useful, i guess
+        "mhartington/formatter.nvim"
+    }
+)

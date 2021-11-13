@@ -1,6 +1,6 @@
 local map = vim.api.nvim_set_keymap
 
-local nor = {noremap=true, silent=true}
+local nor = {noremap = true, silent = true}
 
 map("i", "jk", "<Esc>", nor)
 
@@ -16,13 +16,16 @@ map("n", "<leader>b", ":Telescope buffers<CR>", nor)
 
 map("n", "<leader>/", ":noh<CR>", nor)
 
-map("v", "<leader>y", '"+y',nor)
+map("v", "<leader>y", '"+y', nor)
 
 map("n", "<C-b>", ":NvimTreeToggle<CR>", nor)
 
 map("n", "<leader>fd", ":Telescope lsp_document_diagnostics<CR>", nor)
 map("n", "<leader>fr", ":Telescope lsp_references<CR>", nor)
+map("n", "<leader>fp", ":Telescope commands<CR>", nor)
 
+map("n", "<leader>gii", ":GoImpl<CR> ", nor)
+map("n", "<leader>gie", ":GoImplements<CR> ", nor)
 
 vim.cmd [[
 function! ToggleQuickFix()

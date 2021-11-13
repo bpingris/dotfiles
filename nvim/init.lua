@@ -1,13 +1,13 @@
-require'b.plugins'
-require'b.options'
-require'b.keybindings'
-require'b.telescope'
-require'b.lsp'
-require'b.treesitter'
-require'b.autopairs'
-require'b.formatter'
-require'b.colors'
-require'b.tabline'
-require'b.statusline'
-require'b.fileexplorer'
-require'b.per_project'
+require "b.plugins"
+require "b.options"
+require "b.keybindings"
+require "b.telescope"
+require "b.lsp"
+require "b.treesitter"
+require "b.autopairs"
+require "b.formatting"
+require "b.colors"
+require "b.tabline"
+require "b.statusline"
+require "b.fileexplorer"
+require "b.per_project"
