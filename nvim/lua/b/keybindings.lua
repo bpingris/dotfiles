@@ -28,6 +28,14 @@ map("n", "<leader>gii", ":GoImpl<CR> ", nor)
 map("n", "<leader>gie", ":GoImplements<CR> ", nor)
 
 vim.cmd [[
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+]]
+
+vim.cmd [[
 function! ToggleQuickFix()
     if getqflist({'winid' : 0}).winid
         cclose

@@ -33,12 +33,13 @@ plug(
         "hrsh7th/cmp-buffer",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-vsnip",
+        "rafamadriz/friendly-snippets",
         "hrsh7th/vim-vsnip",
+        "hrsh7th/vim-vsnip-integ",
         "hrsh7th/cmp-path",
         "neovim/nvim-lspconfig",
         "williamboman/nvim-lsp-installer",
         "windwp/nvim-autopairs",
-        "tpope/vim-commentary",
         "tpope/vim-eunuch",
         "tpope/vim-fugitive",
         "tpope/vim-surround",
@@ -50,6 +51,8 @@ plug(
         "akinsho/flutter-tools.nvim",
         "editorconfig/editorconfig-vim",
         -- "github/copilot.vim", fun but not *that* useful, i guess
-        "mhartington/formatter.nvim"
+        "mhartington/formatter.nvim",
+        "p00f/nvim-ts-rainbow",
+        "numToStr/Comment.nvim"
     }
 )
