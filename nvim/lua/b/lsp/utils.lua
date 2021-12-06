@@ -1,6 +1,6 @@
-local au = require'b.au'
+local au = require "b.au"
 
-local M = {};
+local M = {}
 
 -- M.setFormatOnSave = function(client)
 --   if client.resolved_capabilities.document_formatting then
@@ -40,11 +40,15 @@ local M = {};
 --
 
 M.set_keybindings = function(bufnr)
-    local opts = { noremap = true, silent = true }
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local opts = {noremap = true, silent = true}
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+    local function map(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
     map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
@@ -55,11 +59,10 @@ M.set_keybindings = function(bufnr)
     map("n", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
     map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", opts)
     map("n", "<leader>a", ":lua vim.lsp.buf.code_action()<CR>", opts)
-    map("n", "<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+    map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>", opts)
     map("n", "d[", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     map("n", "d]", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
-
 
 M.setup_aucmd = function(client)
     if client and client.resolved_capabilities.document_formatting then
@@ -75,9 +78,9 @@ M.setup_aucmd = function(client)
     end
 end
 
-M.default_on_attach = function (client, bufnr)
+M.default_on_attach = function(client, bufnr)
     -- M.setup_aucmd(client)
     M.set_keybindings(bufnr)
 end
 
-return M;
+return M

@@ -26,6 +26,7 @@ opt.pumheight = 10
 
 opt.termguicolors = true
 opt.wrap = false
+opt.ignorecase = true
 
 vim.cmd [[
 set shortmess+=c
