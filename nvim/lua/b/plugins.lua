@@ -41,18 +41,17 @@ plug(
         "williamboman/nvim-lsp-installer",
         "windwp/nvim-autopairs",
         "tpope/vim-eunuch",
-        "tpope/vim-fugitive",
         "tpope/vim-surround",
+        "tpope/vim-fugitive",
         "kyazdani42/nvim-web-devicons",
         "akinsho/bufferline.nvim",
-        "projekt0n/github-nvim-theme",
         "nvim-lualine/lualine.nvim",
         "kyazdani42/nvim-tree.lua",
         "akinsho/flutter-tools.nvim",
         "editorconfig/editorconfig-vim",
-        -- "github/copilot.vim", fun but not *that* useful, i guess
         "mhartington/formatter.nvim",
         "p00f/nvim-ts-rainbow",
-        "numToStr/Comment.nvim"
+        "numToStr/Comment.nvim",
+        {"folke/tokyonight.nvim", branch = "main"}
     }
 )
