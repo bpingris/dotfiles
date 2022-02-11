@@ -76,22 +76,19 @@ local cfg = {
     vue = {
         function()
             return {
-                exe = "prettier",
-                args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote", "--parser", "vue"},
-                stdin = true
+                exe = "eslint",
+                args = {
+                    "--fix-dry-run",
+                    "--format",
+                    "JSON",
+                    "--stdin",
+                    "--stdin-filename",
+                    vim.api.nvim_buf_get_name(0)
+                },
+                stdin = false
             }
         end
     }
-    -- extra slow + asks each time if I want to reopen the file as it has been changed
-    -- dart = {
-    --   function()
-    --     return {
-    --       exe = "flutter",
-    --       args = {"format", vim.api.nvim_buf_get_name(0)},
-    --       stdin = false
-    --     }
-    --   end
-    -- }
 }
 require("formatter").setup(
     {

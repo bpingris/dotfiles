@@ -39,6 +39,8 @@ plug(
         "hrsh7th/cmp-path",
         "neovim/nvim-lspconfig",
         "williamboman/nvim-lsp-installer",
+        "jose-elias-alvarez/null-ls.nvim",
+        -- "crispgm/nvim-go",
         "windwp/nvim-autopairs",
         "tpope/vim-eunuch",
         "tpope/vim-surround",
@@ -52,6 +54,8 @@ plug(
         "mhartington/formatter.nvim",
         "p00f/nvim-ts-rainbow",
         "numToStr/Comment.nvim",
-        {"folke/tokyonight.nvim", branch = "main"}
+        {"folke/tokyonight.nvim", branch = "main"},
+        "dart-lang/dart-vim-plugin"
+        -- "sidebar-nvim/sidebar.nvim"
     }
 )

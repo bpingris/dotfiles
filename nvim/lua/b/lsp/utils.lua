@@ -60,8 +60,8 @@ M.set_keybindings = function(bufnr)
     map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", opts)
     map("n", "<leader>a", ":lua vim.lsp.buf.code_action()<CR>", opts)
     map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>", opts)
-    map("n", "d[", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    map("n", "d]", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    map("n", "d[", ":lua vim.diagnostic.goto_prev()<CR>", opts)
+    map("n", "d]", ":lua vim.diagnostic.goto_next()<CR>", opts)
 end
 
 M.setup_aucmd = function(client)
