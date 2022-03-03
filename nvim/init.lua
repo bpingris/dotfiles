@@ -1,15 +1,11 @@
-require "b.plugins"
-require "b.options"
-require "b.keybindings"
-require "b.telescope"
-require "b.lsp"
-require "b.treesitter"
-require "b.autopairs"
--- require "b.formatting"
-require "b.colors"
-require "b.tabline"
-require "b.statusline"
-require "b.fileexplorer"
--- require "b.sidebar"
-require "b.comment"
-require "b.per_project"
+require('b.plugins')
+require('b.options')
+require('b.lualine')
+require('b.comment')
+require('b.keymaps')
+require('b.telescope')
+require('b.treesitter')
+require('b.lsp')
+require('b.autopairs')
+require('b.tree')
+require('b.bufferline')
