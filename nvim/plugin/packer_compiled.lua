@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
     url = "https://github.com/editorconfig/editorconfig-vim"
   },
+  ["flutter-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
+    url = "https://github.com/akinsho/flutter-tools.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -144,10 +149,10 @@ _G.packer_plugins = {
     path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-treesitter-textobjects"] = {
+  ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+    path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -178,11 +183,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors",
     url = "https://github.com/bluz71/vim-nightfly-guicolors"
-  },
-  ["vim-rhubarb"] = {
-    loaded = true,
-    path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
-    url = "https://github.com/tpope/vim-rhubarb"
   },
   ["vim-surround"] = {
     loaded = true,
