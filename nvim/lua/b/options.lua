@@ -18,7 +18,14 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.smarttab = true
 opt.expandtab = true
-vim.cmd([[colorscheme nightfly]])
+
+require("nightfox").setup({
+	options = {
+		dim_inactive = true,
+	},
+})
+
+vim.cmd([[colorscheme nightfox]])
 
 -- Highlight on yank
 vim.cmd([[
@@ -27,3 +34,5 @@ vim.cmd([[
       autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]])
+
+vim.cmd("command Bd :bp|bd #")

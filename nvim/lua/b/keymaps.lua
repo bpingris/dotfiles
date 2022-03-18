@@ -21,6 +21,7 @@ map("n", "K", ":BufferLineCycleNext<CR>")
 map("n", "<BS>", "<C-^>")
 
 map("v", "<leader>y", '"+y')
+map("n", "<leader>dd", ":Bd<CR>")
 
 --Add leader shortcuts
 map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>")

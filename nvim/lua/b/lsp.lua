@@ -51,7 +51,7 @@ local lsp_installer = require("nvim-lsp-installer")
 local old_handler = vim.lsp.handlers["textDocument/definition"]
 vim.lsp.handlers["textDocument/definition"] = function(...)
 	old_handler(...)
-	vim.cmd("normal zz")
+	vim.cmd("norm zz")
 end
 local on_attach = function(_, bufnr)
 	local opts = { noremap = true, silent = true }
@@ -89,7 +89,7 @@ end
 lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = function(client, bufnr)
-			if contains({ "tsserver", "gopls" }, server.name) then
+			if contains({ "tsserver", "gopls", "volar" }, server.name) then
 				client.resolved_capabilities.document_formatting = false
 			end
 			on_attach(client, bufnr)

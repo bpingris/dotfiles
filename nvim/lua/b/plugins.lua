@@ -19,7 +19,8 @@ require("packer").startup(function(use)
 	-- UI to select things (files, grep results, open buffers...)
 	use({ "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("bluz71/vim-nightfly-guicolors")
+	-- use("bluz71/vim-nightfly-guicolors")
+	use("EdenEast/nightfox.nvim") -- Packer
 	use("nvim-lualine/lualine.nvim") -- Fancier statusline
 
 	use("nvim-treesitter/nvim-treesitter")
