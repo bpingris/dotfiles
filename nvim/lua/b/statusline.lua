@@ -1,8 +1,8 @@
 require("lualine").setup({
 	options = {
-		icons_enabled = false,
-		theme = "nightfly",
+		icons_enabled = true,
 		component_separators = "|",
 		section_separators = "",
+		globalstatus = true,
 	},
 })

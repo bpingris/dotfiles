@@ -1,151 +1,99 @@
--- nvim-cmp setup
 local cmp = require("cmp")
+local lsp = require("lsp-zero")
+local null_ls = require("null-ls")
 
-local feedkey = function(key, mode)
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+lsp.preset("recommended")
 
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-		end,
-	},
-	mapping = {
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
-		["<Tab>"] = function(fallback)
-			if cmp.visible() then
-				cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				})()
-			elseif vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end,
-	},
-	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "vsnip" }, -- For vsnip users.
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "path" },
-	},
+local cmp_mapping = lsp.defaults.cmp_mappings()
+
+cmp_mapping["<C-p>"] = cmp.mapping.select_prev_item(cmp_select)
+cmp_mapping["<C-n>"] = cmp.mapping.select_next_item(cmp_select)
+cmp_mapping["<Tab>"] = cmp.mapping.confirm({ select = true })
+
+lsp.setup_nvim_cmp({ mapping = cmp_mapping })
+
+lsp.set_preferences({
+	set_lsp_keymaps = false,
 })
 
-local lsp_installer = require("nvim-lsp-installer")
+lsp.configure("tsserver", {
+	on_attach = function(client)
+		client.resolved_capabilities.document_formatting = false
+	end,
+})
 
-local old_handler = vim.lsp.handlers["textDocument/definition"]
-vim.lsp.handlers["textDocument/definition"] = function(...)
-	old_handler(...)
-	vim.cmd("norm zz")
-end
-local on_attach = function(_, bufnr)
-	local opts = { noremap = true, silent = true }
-	local lsp = function(cmd)
-		return ":lua vim.lsp." .. cmd
-	end
-	local diag = function(cmd)
-		return ":lua vim.diagnostic." .. cmd
-	end
-
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", lsp("buf.declaration()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", lsp("buf.definition()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", lsp("buf.hover()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", lsp("buf.implementation()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", lsp("buf.references()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", lsp("buf.rename()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", lsp("buf.signature_help()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>a", lsp("buf.code_action()<CR>"), opts)
-	-- Diagnostic keymaps
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>e", diag("open_float()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "d[", diag("goto_prev()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "d]", diag("goto_next()<CR>"), opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", diag("setloclist()<CR>"), opts)
-end
-
-local function contains(tab, val)
-	for index, value in ipairs(tab) do
-		if value == val then
-			return true
-		end
-	end
-	return false
-end
-
-lsp_installer.on_server_ready(function(server)
-	local opts = {
-		on_attach = function(client, bufnr)
-			if contains({ "tsserver", "gopls", "volar" }, server.name) then
-				client.resolved_capabilities.document_formatting = false
-			end
-			on_attach(client, bufnr)
-		end,
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	}
-	server:setup(opts)
-end)
-
-local formatting = require("null-ls").builtins.formatting
-local diagnostics = require("null-ls").builtins.diagnostics
-local code_actions = require("null-ls").builtins.code_actions
--- local completions = require("null-ls").builtins.completion
-
-require("null-ls").setup({
-	sources = {
-		formatting.eslint_d,
-		diagnostics.eslint,
-		code_actions.eslint_d,
-		formatting.goimports,
-		formatting.stylua,
+lsp.configure("sumneko_lua", {
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
 	},
 	on_attach = function(client)
+		client.resolved_capabilities.document_formatting = false
+	end,
+})
+
+lsp.on_attach(function(_, bufnr)
+	local map = function(mode, lhs, rhs)
+		local opts = { remap = false, buffer = bufnr }
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
+
+	-- LSP actions
+	map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<cr>")
+	map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+	map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
+	map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+	map("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+	map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+	map("n", "gn", "<cmd>lua vim.lsp.buf.rename()<cr>")
+	map("n", "<leader>k", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+	map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+	map("x", "<leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+
+	-- Diagnostics
+	map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<cr>")
+	map("n", "d[", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+	map("n", "d]", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+end)
+
+local null_opts = lsp.build_options("null-ls", {
+	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
-			vim.cmd([[
-                augroup LspNulllsFormatting
-                    autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-                augroup END
-                ]])
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				desc = "Auto format before save",
+				pattern = "<buffer>",
+				callback = vim.lsp.buf.formatting_sync,
+			})
 		end
 	end,
 })
 
-require("flutter-tools").setup({
-	lsp = {
-		on_attach = function(...)
-			vim.cmd([[
-            augroup DartlsFormatting
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-            augroup END
-            ]])
-			on_attach(...)
-		end,
-		settings = {
-			showTodos = false,
-			completeFunctionCalls = true,
-			analysisExcludedFolders = {
-				vim.fn.expand("$HOME/.pub-cache"),
-				vim.fn.expand("$HOME/flutter/packages"),
-				vim.fn.expand("$HOME/flutter/bin/cache"),
-				vim.fn.expand("$HOME/flutter/.pub-cache"),
-				vim.fn.expand("$HOME/flutter"),
-			},
-			lineLength = 120,
-		},
+null_ls.setup({
+	on_attach = null_opts.on_attach,
+	sources = {
+		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.code_actions.eslint_d,
+		null_ls.builtins.formatting.stylua,
 	},
 })
+
+lsp.setup()
