@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lualine-lsp-progress.nvim"] = {
+    loaded = true,
+    path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/lualine-lsp-progress.nvim",
+    url = "https://github.com/WhoIsSethDaniel/lualine-lsp-progress.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/bpingris/.local/share/nvim/site/pack/packer/start/lualine.nvim",

@@ -5,4 +5,10 @@ require("lualine").setup({
 		section_separators = "",
 		globalstatus = true,
 	},
+	sections = {
+		lualine_c = {
+			"filename",
+			"lsp_progress",
+		},
+	},
 })

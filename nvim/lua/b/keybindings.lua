@@ -19,13 +19,12 @@ keymap({ "i" }, "jk", "<Esc>")
 keymap({ "i", "n" }, "<C-s>", "<Esc>:w<CR>")
 
 -- neotree
-keymap({ "n" }, "<leader>b", ":NeoTreeFloatToggle<CR>")
+keymap({ "n" }, "<leader>b", ":NeoTreeRevealToggle<CR>")
 
 local telescope = require("telescope.builtin")
 
 keymap("n", "<leader>p", telescope.find_files)
 keymap("n", "<leader>f", telescope.live_grep)
--- keymap("n", "<leader>b", telescope.buffers)
 keymap("n", "<leader>o", "<C-^>")
 
 keymap("n", "n", "nzzzv")
