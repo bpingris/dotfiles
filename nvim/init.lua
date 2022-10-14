@@ -1,5 +1,6 @@
 require("b.plugins")
 require("b.settings")
+require("b.tokyonight")
 require("b.treesitter")
 require("b.lsp")
 require("b.telescope")
