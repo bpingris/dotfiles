@@ -5,7 +5,4 @@ require("neo-tree").setup({
 	enable_diagnostics = true,
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
 	sort_function = nil, -- use a custom function for sorting files and directories in the tree
-	filesystem = {
-		follow_current_file = true,
-	},
 })
