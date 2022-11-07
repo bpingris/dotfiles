@@ -3,64 +3,88 @@ local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	is_bootstrap = true
 	vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-	vim.cmd([[packadd packer.nvim]])
+	vim.cmd([[ packadd packer.nvim ]])
 end
 
 require("packer").startup(function(use)
-	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	use("nvim-lua/plenary.nvim")
-	use("kyazdani42/nvim-web-devicons")
+	use("lewis6991/impatient.nvim")
 
-	use("gpanders/editorconfig.nvim")
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		requires = {
+			-- LSP Support
+			"neovim/nvim-lspconfig",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
 
-	use("VonHeikemen/lsp-zero.nvim")
+			-- Autocompletion
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-cmdline",
 
-	-- LSP Support
-	use("neovim/nvim-lspconfig")
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("WhoIsSethDaniel/lualine-lsp-progress.nvim")
+			-- Snippets
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+		},
+		config = require("b.lsp"),
+	})
 
-	-- Autocompletion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("saadparwaiz1/cmp_luasnip")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
-	use("hrsh7th/cmp-cmdline")
+	use({ "folke/tokyonight.nvim", config = require("b.tokyonight") })
+	use({ "kylechui/nvim-surround", config = require("b.surround") })
+	--
+	use({ "windwp/nvim-autopairs", config = require("b.autopairs") })
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		config = require("b.neotree"),
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+	})
+	--
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = require("b.telescope"),
+		requires = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
+	})
 
-	-- Snippets
-	use("L3MON4D3/LuaSnip")
-	use("rafamadriz/friendly-snippets")
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = require("b.treesitter"),
+		requires = { "nvim-treesitter/nvim-treesitter-context" },
+	})
+	use({
+		"numToStr/Comment.nvim",
+		config = require("b.comment"),
+		requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+	})
 
-	use("folke/tokyonight.nvim")
+	use({
+		"christoomey/vim-tmux-navigator",
+		"gpanders/editorconfig.nvim",
+	})
 
-	use("windwp/nvim-autopairs")
-	use("MunifTanjim/nui.nvim")
-	use("nvim-neo-tree/neo-tree.nvim")
-
-	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("nvim-treesitter/nvim-treesitter-context")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
-
-	use("kylechui/nvim-surround")
-
-	use("christoomey/vim-tmux-navigator")
-
-	use("numToStr/Comment.nvim")
-
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb")
-	use("tpope/vim-eunuch")
-
-	use("nvim-lualine/lualine.nvim")
+	use({
+		"tpope/vim-fugitive",
+		"tpope/vim-rhubarb",
+		"tpope/vim-eunuch",
+	})
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "WhoIsSethDaniel/lualine-lsp-progress.nvim" },
+		config = require("b.lualine"),
+	})
 
 	if is_bootstrap then
 		require("packer").sync()

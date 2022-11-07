@@ -19,7 +19,7 @@ keymap({ "i" }, "jk", "<Esc>")
 keymap({ "i", "n" }, "<C-s>", "<Esc>:w<CR>")
 
 -- neotree
-keymap({ "n" }, "<leader>b", ":NeoTreeRevealToggle<CR>")
+keymap({ "n" }, "<leader>b", ":NeoTreeFloatToggle<CR>")
 
 local telescope = require("telescope.builtin")
 
