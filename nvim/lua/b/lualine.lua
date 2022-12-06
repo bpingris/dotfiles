@@ -9,7 +9,6 @@ return function()
 		sections = {
 			lualine_c = {
 				"filename",
-				"lsp_progress",
 			},
 		},
 	})

@@ -31,6 +31,7 @@ local options = {
 	spell = false,
 	list = true,
 	listchars = { tab = "▸ " },
+	fillchars = { eob = " " },
 	winbar = "%f",
 }
 
@@ -40,11 +41,6 @@ end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 
-vim.opt.fillchars:append({ eob = " " }) -- hide tildes at the end of buffers
-
-vim.g.vim_markdown_fenced_languages =
-	"c++=cpp", "python", "viml=vim", "bash=sh", "javascript=js", "java", "html", "xml", "markdown"
-
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -53,5 +49,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
-
-vim.cmd([[ colorscheme tokyonight ]])
