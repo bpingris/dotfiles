@@ -30,7 +30,7 @@ local options = {
 	scrolloff = 5,
 	spell = false,
 	list = true,
-	listchars = { tab = "▸ " },
+	listchars = { tab = "│ " },
 	fillchars = { eob = " " },
 	winbar = "%f",
 }
@@ -38,8 +38,6 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
-vim.cmd("set whichwrap+=<,>,[,],h,l")
 
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -49,3 +47,46 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- Use proper syntax highlighting in code blocks
+local fences = {
+	"lua",
+	-- "vim",
+	"json",
+	"typescript",
+	"javascript",
+	"js=javascript",
+	"ts=typescript",
+	"shell=sh",
+	"python",
+	"sh",
+	"console=sh",
+}
+vim.g.markdown_fenced_languages = fences
+vim.g.markdown_recommended_style = 0
+
+-- don't load the plugins below
+local builtins = {
+	"gzip",
+	"zip",
+	"zipPlugin",
+	"fzf",
+	"tar",
+	"tarPlugin",
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"2html_plugin",
+	"matchit",
+	"matchparen",
+	"logiPat",
+	"rrhelper",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+}
+
+for _, plugin in ipairs(builtins) do
+	vim.g["loaded_" .. plugin] = 1
+end

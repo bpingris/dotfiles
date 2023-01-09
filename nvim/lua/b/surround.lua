@@ -1,3 +1,1 @@
-return function()
-	require("nvim-surround").setup()
-end
+require("nvim-surround").setup()

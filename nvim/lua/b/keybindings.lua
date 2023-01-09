@@ -25,8 +25,15 @@ local telescope = require("telescope.builtin")
 
 keymap("n", "<leader>p", telescope.find_files)
 keymap("n", "<leader>f", telescope.live_grep)
-keymap("n", "<leader>o", "<C-^>")
-keymap("n", "<leader>lf", ":LspFormat<CR>")
 
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
+
+keymap("n", "gp", "`[v`]")
+
+keymap("n", "gx", function()
+	vim.fn.jobstart({ "open", vim.fn.expand("<cfile>", nil, nil) }, { on_exit = function() end })
+end)
+
+keymap("n", "gh", "0")
+keymap("n", "gl", "$")
