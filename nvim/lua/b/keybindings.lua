@@ -1,39 +1,47 @@
-local keymap = require("b.utils").keymap
+local map = require("b.utils").keymap
 
-keymap({ "n", "v" }, "<Space>", "<Nop>")
+map({ "n", "v" }, "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Stay in indent mode
-keymap({ "v" }, ">", ">gv")
-keymap({ "v" }, "<", "<gv")
+map({ "v" }, ">", ">gv")
+map({ "v" }, "<", "<gv")
 
 -- Move text up and down
-keymap({ "v" }, "K", ":m '<-2<CR>gv=gv")
-keymap({ "v" }, "J", ":m '>+1<CR>gv=gv")
+map({ "v" }, "K", ":m '<-2<CR>gv=gv")
+map({ "v" }, "J", ":m '>+1<CR>gv=gv")
 
-keymap({ "n" }, "<leader>/", ":nohl<CR>")
+map({ "n" }, "<leader>/", ":nohl<CR>")
 
-keymap({ "i" }, "jk", "<Esc>")
+map({ "i" }, "jk", "<Esc>")
 
-keymap({ "i", "n" }, "<C-s>", "<Esc>:w<CR>")
+map({ "i", "n" }, "<C-s>", "<Esc>:w<CR>")
 
 -- neotree
-keymap({ "n" }, "<leader>b", ":NeoTreeFloatToggle<CR>")
+map({ "n" }, "<leader>b", ":NeoTreeFloatToggle<CR>")
 
 local telescope = require("telescope.builtin")
 
-keymap("n", "<leader>p", telescope.find_files)
-keymap("n", "<leader>f", telescope.live_grep)
+map("n", "<leader>p", telescope.find_files)
+map("n", "<leader>f", telescope.live_grep)
 
-keymap("n", "n", "nzzzv")
-keymap("n", "N", "Nzzzv")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
-keymap("n", "gp", "`[v`]")
+map("n", "gp", "`[v`]")
 
-keymap("n", "gx", function()
+map("n", "gx", function()
 	vim.fn.jobstart({ "open", vim.fn.expand("<cfile>", nil, nil) }, { on_exit = function() end })
 end)
 
-keymap("n", "gh", "0")
-keymap("n", "gl", "$")
+map("n", "gh", "0")
+map("n", "gl", "$")
+map("v", "gh", "0")
+map("v", "gl", "$")
+
+map({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
+map({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
+map({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
+map({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
+map({ "n", "t" }, "<C-p>", "<CMD>NavigatorPrevious<CR>")

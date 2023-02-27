@@ -16,6 +16,7 @@ require("paq")({
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 
 	"numToStr/Comment.nvim",
+	"numToStr/Navigator.nvim",
 	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	{

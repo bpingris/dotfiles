@@ -38,7 +38,7 @@ lsp.configure("jsonls", {
 	},
 })
 
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = {

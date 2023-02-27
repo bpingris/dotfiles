@@ -47,6 +47,7 @@ require("lualine").setup({
 		component_separators = "|",
 		section_separators = "",
 		globalstatus = true,
+		theme = "tokyonight",
 	},
 	sections = {
 		lualine_c = {
@@ -54,4 +55,3 @@ require("lualine").setup({
 		},
 	},
 })
-

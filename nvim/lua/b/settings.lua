@@ -39,22 +39,17 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
-})
-
 -- Use proper syntax highlighting in code blocks
 local fences = {
 	"lua",
 	-- "vim",
 	"json",
 	"typescript",
+	"typescriptreact",
+	"tsx=typescriptreact",
 	"javascript",
+	"javascriptreact",
+	"jsx=javascriptreact",
 	"js=javascript",
 	"ts=typescript",
 	"shell=sh",
@@ -79,7 +74,6 @@ local builtins = {
 	"vimballPlugin",
 	"2html_plugin",
 	"matchit",
-	"matchparen",
 	"logiPat",
 	"rrhelper",
 	"netrwPlugin",

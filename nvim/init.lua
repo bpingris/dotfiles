@@ -4,6 +4,7 @@ end
 
 require("b.plugins")
 require("b.settings")
+require("b.aucmds")
 require("b.keybindings")
 require("b.theme")
 require("b.telescope")
@@ -13,3 +14,4 @@ require("b.surround")
 require("b.autopairs")
 require("b.tree")
 require("b.lsp")
+require("b.navigator")
