@@ -1,27 +1,46 @@
-# https://github.com/jandamm/zgenom#installation
-source ~/.zgenom/zgenom.zsh
+# Created by Zap installer
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+# plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "chivalryq/git-alias"
 
-if ! zgenom saved; then
+plug "$HOME/.config/zsh/vim.zsh"
+plug "$HOME/.config/zsh/prompt.zsh"
 
-  # specify plugins here
-  zgenom ohmyzsh
-  zgenom ohmyzsh plugins/git
-  zgenom ohmyzsh themes/simple
-  zgenom load zsh-users/zsh-syntax-highlighting
-  zgenom zsh-users/zsh-history-substring-search
+# bun completions
+[ -s "/Users/bpingris/.bun/_bun" ] && source "/Users/bpingris/.bun/_bun"
+[ -s "/Users/bpingris/.gh/_gh" ] && source "/Users/bpingris/.gh/_gh"
 
+path+=(
+   ~/bin
+   ~/go/bin
+   ~/flutter/bin
+)
 
-  # generate the init script from plugins above
-  zgenom save
-fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/bpingris/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bpingris/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
-alias l='ls -la'
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/bpingris/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bpingris/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-export GOPATH=~/go
-export GOBIN=$GOPATH/bin
+killport() {
+   echo "$1"
+   lsof -i ":$1" | awk 'NR > 1 {print $2}' | xargs kill -9
+}
 
-path+=(~/bin $GOBIN)
+# Bun
+export BUN_INSTALL="/Users/bpingris/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-# fnm
-export PATH=/home/benoitp/.fnm:$PATH
-eval "`fnm env`"
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+
+# pnpm
+export PNPM_HOME="/Users/bpingris/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+alias pn="pnpm"
+alias cl="clear"

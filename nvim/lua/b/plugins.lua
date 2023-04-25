@@ -16,7 +16,6 @@ require("paq")({
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 
 	"numToStr/Comment.nvim",
-	"numToStr/Navigator.nvim",
 	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	{
@@ -49,4 +48,11 @@ require("paq")({
 	"L3MON4D3/LuaSnip",
 	"jose-elias-alvarez/null-ls.nvim",
 	"b0o/SchemaStore.nvim",
+	"echasnovski/mini.bracketed",
+
+	"folke/neoconf.nvim",
+
+	{ "chipsenkbeil/distant.nvim", branch = "v0.2" },
+
+	"jcdickinson/codeium.nvim",
 })

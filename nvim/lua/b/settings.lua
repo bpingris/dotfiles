@@ -58,7 +58,13 @@ local fences = {
 	"console=sh",
 }
 vim.g.markdown_fenced_languages = fences
-vim.g.markdown_recommended_style = 0
+
+vim.g.markdown_folding_level = 10
+vim.g.markdown_folding_style_pythonic = 1
+vim.g.markdown_conceal_code_blocks = 0
+vim.g.markdown_frontmatter = 1
+vim.g.markdown_strikethrough = 1
+-- vim.g.markdown_recommended_style = 0
 
 -- don't load the plugins below
 local builtins = {
@@ -80,7 +86,8 @@ local builtins = {
 	"netrwSettings",
 	"netrwFileHandlers",
 }
-
+vim.g.markdown_conceal_code_blocks = 0
+vim.g.markdown_conceal = 0
 for _, plugin in ipairs(builtins) do
 	vim.g["loaded_" .. plugin] = 1
 end

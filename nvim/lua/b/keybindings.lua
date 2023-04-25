@@ -23,8 +23,10 @@ map({ "n" }, "<leader>b", ":NeoTreeFloatToggle<CR>")
 
 local telescope = require("telescope.builtin")
 
-map("n", "<leader>p", telescope.find_files)
-map("n", "<leader>f", telescope.live_grep)
+map("n", "<leader>fp", telescope.find_files)
+map("n", "<leader>ff", telescope.live_grep)
+map("n", "<leader>fb", telescope.buffers)
+map("n", "<leader>fs", telescope.lsp_document_symbols)
 
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
@@ -40,8 +42,4 @@ map("n", "gl", "$")
 map("v", "gh", "0")
 map("v", "gl", "$")
 
-map({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
-map({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
-map({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
-map({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
-map({ "n", "t" }, "<C-p>", "<CMD>NavigatorPrevious<CR>")
+require("mini.bracketed").setup()
