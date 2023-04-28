@@ -36,6 +36,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
+bindkey '^R' history-incremental-search-backward
 
 # pnpm
 export PNPM_HOME="/Users/bpingris/Library/pnpm"
