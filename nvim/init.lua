@@ -123,18 +123,19 @@ require("lazy").setup({
   -- requirements installed.
   {
     "nvim-tree/nvim-tree.lua",
-    keys = { { "<leader>b", ":NvimTreeToggle<cr>", desc = "NvimTree" } },
+    keys = { { "<leader>b", ":NvimTreeFindFileToggle<cr>", desc = "NvimTree" } },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require('nvim-tree').setup({
+      require("nvim-tree").setup({
         view = {
-          side = "right"
+          side = "right",
+          width = 45,
         },
         filters = {
-          dotfiles = true
-        }
+          dotfiles = false,
+        },
       })
-    end
+    end,
   },
 
   {
@@ -160,6 +161,13 @@ require("lazy").setup({
   require("b.telescope"),
   require("b.autoformat"),
   require("b.copilot"),
+
+  {
+    "echasnovski/mini.bracketed",
+    config = function()
+      require("mini.bracketed").setup()
+    end,
+  },
 }, {})
 
 -- [[ Setting options ]]
@@ -367,7 +375,15 @@ null_ls.setup({
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.code_actions.eslint_d,
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettierd.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json",
+      },
+    }),
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.ruff,
     null_ls.builtins.formatting.black,
