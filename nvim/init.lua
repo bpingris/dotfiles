@@ -160,7 +160,8 @@ require("lazy").setup({
   },
   require("b.telescope"),
   require("b.autoformat"),
-  require("b.copilot"),
+  -- require("b.copilot"),
+  require("b.codeium"),
 
   {
     "echasnovski/mini.bracketed",
