@@ -20,11 +20,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
+local prettier = { "biome", "prettierd" }
+
 require("lazy").setup({
 	-- NOTE: First, some plugins that don't require any configuration
 
@@ -47,14 +44,11 @@ require("lazy").setup({
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 
-			-- Useful status updates for LSP
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			{ "j-hui/fidget.nvim", opts = {}, tag = "legacy" },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
 			"folke/neodev.nvim",
-
-			"jose-elias-alvarez/null-ls.nvim",
 		},
 	},
 
@@ -171,15 +165,48 @@ require("lazy").setup({
 	},
 
 	{
-		"axkirillov/hbac.nvim",
-		dependencies = {
-			-- these are optional, add them, if you want the telescope module
-			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
+		"stevearc/conform.nvim",
+		init = function()
+			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+		end,
+		event = { "BufWritePre" },
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				javascript = { prettier },
+				javascriptreact = { prettier },
+				typescript = { prettier },
+				typescriptreact = { prettier },
+				css = { prettier },
+				html = { prettier },
+				json = { prettier },
+				jsonc = { prettier },
+				yaml = { prettier },
+				markdown = { prettier },
+				["_"] = { "trim_whitespace", "tim_newlines" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
 		},
+	},
+
+	{
+		"mfussenegger/nvim-lint",
 		config = function()
-			require("hbac").setup()
+			require("lint").linters_by_ft = {
+				javascript = { "eslint_d" },
+				javascriptreact = { "eslint_d" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+			}
+
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
 		end,
 	},
 }, {})
@@ -242,6 +269,9 @@ vim.keymap.set("i", "jk", "<Esc>")
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
+	sync_install = true,
+	modules = {},
+	ignore_install = {},
 	-- Add languages to be installed here that you want installed for treesitter
 	ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim" },
 
@@ -371,40 +401,6 @@ cmp.setup({
 	},
 })
 
-local null_ls = require("null-ls")
-
-null_ls.setup({
-	on_attach = function(client, bufnr)
-		if client.server_capabilities.documentFormattingProvider then
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				desc = "Auto format before save",
-				pattern = "<buffer>",
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-				end,
-			})
-		end
-	end,
-	sources = {
-		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.code_actions.eslint_d,
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd.with({
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"typescriptreact",
-				"json",
-			},
-		}),
-		null_ls.builtins.diagnostics.ruff,
-		null_ls.builtins.formatting.ruff,
-		null_ls.builtins.formatting.black,
-	},
-})
-
 vim.g.nvim_tree_disable_netrw = 0
 
--- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
