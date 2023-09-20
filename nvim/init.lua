@@ -209,6 +209,15 @@ require("lazy").setup({
 			})
 		end,
 	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup({
+				enable = true,
+			})
+		end,
+	},
 }, {})
 
 -- [[ Setting options ]]
