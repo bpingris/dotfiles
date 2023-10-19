@@ -20,7 +20,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local prettier = { "biome", "prettierd" }
+local prettier = { "eslint_d", "biome", "prettierd" }
 
 require("lazy").setup({
 	-- NOTE: First, some plugins that don't require any configuration
@@ -183,6 +183,7 @@ require("lazy").setup({
 				jsonc = { prettier },
 				yaml = { prettier },
 				markdown = { prettier },
+				python = { "ruff_format" },
 				["_"] = { "trim_whitespace", "tim_newlines" },
 			},
 			format_on_save = {
@@ -200,6 +201,7 @@ require("lazy").setup({
 				javascriptreact = { "eslint_d" },
 				typescript = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
+				python = { "ruff" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
