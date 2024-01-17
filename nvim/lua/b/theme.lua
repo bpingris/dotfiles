@@ -1,5 +1,15 @@
+-- return {
+-- 	"rose-pine/neovim",
+-- 	name = "rose-pine",
+-- 	config = function()
+-- 		require("rose-pine").setup({
+-- 			variant = "dark",
+-- 		})
+-- 	end,
+-- }
+
 return {
-	'folke/tokyonight.nvim',
+	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
