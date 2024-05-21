@@ -1,0 +1,7 @@
+{
+  "linters": {
+    "typescriptreact": [
+     "biome","foo" 
+    ]
+  }
+}
