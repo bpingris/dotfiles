@@ -476,17 +476,17 @@ require("lazy").setup({
 				-- languages here or re-enable it for the disabled ones.
 				local disable_filetypes = { c = true, cpp = true }
 				return {
-					timeout_ms = 500,
+					timeout_ms = 2000,
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { "biome" },
-				javascriptreact = { "biome" },
-				typescript = { "biome" },
-				typescriptreact = { "biome" },
-				json = { "biome" },
+				-- javascript = { "biome" },
+				-- javascriptreact = { "biome" },
+				-- typescript = { "biome" },
+				-- typescriptreact = { "biome" },
+				-- json = { "biome" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -602,6 +602,16 @@ require("lazy").setup({
 		opts = {
 			on_highlights = function(hl, c)
 				local prompt = "#2d3149"
+
+				hl.LineNrAbove = {
+					bg = c.bg,
+					fg = "#928f8e",
+				}
+				hl.LineNrBelow = {
+					bg = c.bg,
+					fg = "#928f8e",
+				}
+
 				hl.TelescopeNormal = {
 					bg = c.bg_dark,
 					fg = c.fg_dark,
