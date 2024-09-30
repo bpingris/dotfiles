@@ -620,7 +620,13 @@ require("lazy").setup({
 			{
 				"<leader>b",
 				function()
-					require("mini.files").open()
+					local current_buffer_path = vim.api.nvim_buf_get_name(0)
+
+					if vim.fn.filereadable(current_buffer_path) == 1 then
+						require("mini.files").open(current_buffer_path)
+					else
+						require("mini.files").open()
+					end
 				end,
 				mode = "n",
 			},
