@@ -228,7 +228,7 @@ require("lazy").setup({
 			})
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 			local servers = {
 				lua_ls = {
@@ -298,8 +298,8 @@ require("lazy").setup({
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		"saghen/blink.cmp",
+		lazy = false,
 		dependencies = {
 			{
 				"L3MON4D3/LuaSnip",
@@ -318,54 +318,39 @@ require("lazy").setup({
 					},
 				},
 			},
-			"saadparwaiz1/cmp_luasnip",
-
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
 		},
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-
-			luasnip.config.setup({})
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+		version = "v0.*",
+		opts = {
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "select_and_accept", "fallback" },
+				["<C-l>"] = { "snippet_forward", "fallback" },
+				["<C-h>"] = { "snippet_backward", "fallback" },
+			},
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+			snippets = {
+				expand = function(snippet)
+					require("luasnip").lsp_expand(snippet)
+				end,
+				active = function(filter)
+					if filter and filter.direction then
+						return require("luasnip").jumpable(filter.direction)
+					end
+					return require("luasnip").in_snippet()
+				end,
+				jump = function(direction)
+					require("luasnip").jump(direction)
+				end,
+			},
+			completion = {
+				documentation = {
+					auto_show = true,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
-
-				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-					["<Tab>"] = cmp.mapping.confirm({ select = true }),
-
-					["<C-e>"] = cmp.mapping.complete({}),
-
-					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { "i", "s" }),
-				}),
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "path" },
-				},
-			})
-		end,
+			},
+		},
 	},
 
 	{
