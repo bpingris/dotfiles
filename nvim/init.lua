@@ -345,6 +345,7 @@ require("lazy").setup({
 					require("luasnip").jump(direction)
 				end,
 			},
+			signature = { enabled = true },
 			completion = {
 				documentation = {
 					auto_show = true,
@@ -437,32 +438,21 @@ require("lazy").setup({
 	{
 		"supermaven-inc/supermaven-nvim",
 		config = function()
-			require("supermaven-nvim").setup({
-				keymaps = { accept_suggestion = "<C-o>" },
-			})
+			require("supermaven-nvim").setup({ keymaps = { accept_suggestion = "<C-o>" } })
 		end,
 	},
 
 	{
 		"nvim-tree/nvim-tree.lua",
 		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		opts = {
-			view = {
-				side = "right",
-				width = 40,
-			},
-		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = { view = { side = "right", width = 40 } },
 		keys = {
 			{ "<leader>b", ":NvimTreeFindFileToggle<cr>", mode = "n" },
 		},
 	},
 }, {
 	ui = {
-		-- If you are using a Nerd Font: set icons to an empty table which will use the
-		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
 		icons = vim.g.have_nerd_font and {} or {
 			cmd = "⌘",
 			config = "🛠",
@@ -481,5 +471,5 @@ require("lazy").setup({
 	},
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
