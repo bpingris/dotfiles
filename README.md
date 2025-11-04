@@ -1,4 +1,4 @@
-# Dotfiles Benoît Pingris
+# Dotfiles
 
 This repository contains useful informations about my setup.
 
