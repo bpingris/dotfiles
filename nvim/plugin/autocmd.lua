@@ -38,3 +38,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 	group = vim.api.nvim_create_augroup("LspAttach", { clear = true }),
 })
+
+vim.api.nvim_create_autocmd("LspProgress", {
+	callback = function()
+		vim.notify(vim.lsp.status(), vim.log.levels.INFO, { id = "lsp_progress", title = "LSP Progress" })
+	end,
+})

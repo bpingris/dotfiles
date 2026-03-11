@@ -77,7 +77,7 @@ require("lze").load({
 	},
 	{
 		"mason.nvim",
-		cmd = "Mason",
+		lazy = false,
 		after = function()
 			require("mason").setup()
 		end,
@@ -115,6 +115,10 @@ require("lze").load({
 		lazy = false,
 		after = function()
 			local get_js_formatter = function(bufnr)
+				if require("conform").get_formatter_info("oxfmt", bufnr).available then
+					return { "oxfmt", lsp_format = "never", stop_after_first = true }
+				end
+
 				if require("conform").get_formatter_info("biome", bufnr).available then
 					return { "biome", lsp_format = "never", stop_after_first = true }
 				end
@@ -144,6 +148,7 @@ require("lze").load({
 			})
 		end,
 	},
+
 	{
 		"nvim-treesitter",
 		lazy = false,
@@ -167,7 +172,7 @@ require("lze").load({
 				},
 				indent = { enable = true, disable = { "ruby" } },
 				disable = function(_, buf)
-					local max_file_size = 200 * 1024 -- 100 KB
+					local max_file_size = 200 * 1024 -- 200 KB
 					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 					if ok and stats and stats.size > max_file_size then
 						return true
@@ -176,6 +181,7 @@ require("lze").load({
 			})
 		end,
 	},
+
 	{
 		"blink.cmp",
 		event = "InsertEnter",
@@ -195,22 +201,12 @@ require("lze").load({
 			})
 		end,
 	},
+
 	{
 		"supermaven-nvim",
 		event = "InsertEnter",
 		after = function()
 			require("supermaven-nvim").setup({ keymaps = { accept_suggestion = "<C-o>" } })
-		end,
-	},
-
-	{
-		"oc",
-		keys = {
-			{ "<leader>oc", ":OC ", mode = { "v", "n" } },
-			{ "<leader>os", require("oc").submit_prompt },
-		},
-		after = function()
-			require("oc").setup()
 		end,
 	},
 })
