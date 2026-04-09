@@ -35,4 +35,6 @@ opt.list = true -- Show whitespace characters
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 vim.cmd.colorscheme("tokyonight-night") -- Set colorscheme
 
-vim.cmd("packadd cfilter")
+vim.cmd.packadd("cfilter")
+vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.difftool")

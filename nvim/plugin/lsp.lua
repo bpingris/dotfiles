@@ -1,20 +1,27 @@
 vim.lsp.enable({
 	"astro",
-	"lua_ls",
-	"gopls",
-	"ts_ls",
-	-- "vtsls",
-	-- "ts_go_ls",
-	"clangd",
-	"ols",
 	"biome",
-	"tailwindcss",
+	"clangd",
+	"gopls",
 	"jsonls",
-	"terraformls",
-	"zls",
-	"ty",
-	"ruff",
+	"lua_ls",
+	"marksma",
+	"ols",
 	"postgres-lsp",
+	"ruff",
+	"tailwindcss",
+	"terraformls",
+	-- "ts_ls",
+	"ty",
+	"zls",
+	"ts_go_ls",
+	-- "vtsls",
+	"oxfmt",
+	"oxlint",
 })
 
 vim.diagnostic.config({ virtual_text = true })
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, {})
