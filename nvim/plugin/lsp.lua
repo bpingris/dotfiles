@@ -8,6 +8,7 @@ vim.lsp.enable({
 	"marksma",
 	"ols",
 	"postgres-lsp",
+	"stylua",
 	"ruff",
 	"tailwindcss",
 	"terraformls",

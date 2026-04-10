@@ -10,11 +10,11 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "1c2c0633cdb933a9b4111d9e6dfa4a476a35ff9f",
+      "rev": "07e90e5898be45678973c38146f819e7e1878a5d",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "lze": {
-      "rev": "a09a8291d7b4c48e2af6a8cd3ef55bb8f3c181cd",
+      "rev": "c4403a54d9cd94156d7a149d830f39a4a437f048",
       "src": "https://github.com/BirdeeHub/lze"
     },
     "mason.nvim": {

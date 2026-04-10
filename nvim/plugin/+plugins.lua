@@ -103,11 +103,11 @@ require("lazypack").setup({
 					}
 				end,
 				formatters_by_ft = {
-					lua = { "stylua" },
-					typescript = get_js_formatter,
-					typescriptreact = get_js_formatter,
-					javascript = get_js_formatter,
-					javascriptreact = get_js_formatter,
+					-- lua = { "stylua" },
+					-- typescript = get_js_formatter,
+					-- typescriptreact = get_js_formatter,
+					-- javascript = get_js_formatter,
+					-- javascriptreact = get_js_formatter,
 					c = { "clang_format" },
 				},
 				clang_format = {
