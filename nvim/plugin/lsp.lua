@@ -7,22 +7,18 @@ vim.lsp.enable({
 	"lua_ls",
 	"marksma",
 	"ols",
-	"postgres-lsp",
-	"stylua",
-	"ruff",
-	"tailwindcss",
-	"terraformls",
-	-- "ts_ls",
-	"ty",
-	"zls",
-	"ts_go_ls",
-	-- "vtsls",
 	"oxfmt",
 	"oxlint",
+	"postgres-lsp",
+	"ruff",
+	"stylua",
+	"tailwindcss",
+	"terraformls",
+	"ts_go_ls",
+	"ty",
+	"zls",
+	-- "ts_ls",
+	-- "vtsls",
 })
 
 vim.diagnostic.config({ virtual_text = true })
-
-vim.api.nvim_create_user_command("PackUpdate", function()
-	vim.pack.update()
-end, {})

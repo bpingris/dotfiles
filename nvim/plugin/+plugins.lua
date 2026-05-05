@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 require("lazypack").setup({
 	"https://github.com/tpope/vim-fugitive",
 	"https://github.com/tpope/vim-rhubarb",
-	"https://github.com/tpope/vim-sleuth",
 	"https://github.com/christoomey/vim-tmux-navigator",
 
 	{
@@ -144,7 +143,7 @@ require("lazypack").setup({
 			{
 				"<leader>ff",
 				function()
-					require("fff").live_grep()
+					require("fff").live_grep({ grep = { modes = { "regex" } } })
 				end,
 			},
 		},
@@ -183,11 +182,6 @@ require("lazypack").setup({
 				end
 				vim.treesitter.start(buf, language)
 				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-				-- enables treesitter based folds
-				-- for more info on folds see `:help folds`
-				-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				-- vim.wo.foldmethod = "expr"
 			end
 
 			vim.api.nvim_create_autocmd("FileType", {
@@ -216,10 +210,10 @@ require("lazypack").setup({
 	},
 })
 
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(event)
-		if event.data.updated then
-			require("fff.download").download_or_build_binary()
-		end
-	end,
-})
+vim.api.nvim_create_user_command("FFFUpdate", function()
+	require("fff.download").download_or_build_binary()
+end, {})
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, {})
